@@ -1,0 +1,36 @@
+@extends(_base, "home")
+@section(moreStyles) {
+<style type="text/css">
+  .links {margin-top: 40px;}
+  .links a.nav-btn {
+    width: 200px;
+    padding: 20px 10px;
+    text-align: center;
+    margin-right: 30px;
+    display: inline-block;
+    cursor: pointer;
+    color: #EEE;
+    text-decoration: none;
+    text-shadow: none;
+    background-color: #1d6ba7;
+  }
+  .links a.nav-btn:hover {
+    background-color: #227dd5;
+    color: #eaeaed;
+  }
+</style>
+}
+
+<div style="margin: 0 auto; width: 810px;text-align: center">
+  <h1>@i18n("index.title")</h1>
+  <div class="links clearfix">
+    <a class="nav-btn learn" title="Read document" href='/doc/index'>
+      <i class="icon-book"></i>
+      @i18n("index.link.doc")
+    </a>
+    <a class="nav-btn use" title="Get rythm" href="/doc/index#get">
+      <i class="icon-download-alt"></i>
+      @i18n("index.link.get-act")
+    </a>
+  </div>
+</div>
