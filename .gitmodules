@@ -1,0 +1,3 @@
+[submodule "src/doc"]
+	path = src/doc
+	url = git@github.com:actframework/act-doc.git
