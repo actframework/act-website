@@ -1,4 +1,4 @@
-package act.website;
+package act_site;
 
 import act.boot.app.RunApp;
 import org.osgl.mvc.annotation.GetAction;
@@ -8,9 +8,8 @@ import static act.controller.Controller.Util.render;
 
 public class WebSite {
 
-    @GetAction("/")
-    public Result home() {
-        return render();
+    @GetAction
+    public void home() {
     }
 
     public static void main(String[] args) throws Exception {
