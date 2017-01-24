@@ -91,17 +91,17 @@
       <li>
         <h6 class="feature">单页/移动应用支持</h6>
         <div class="feature-desc">
-          Supports the trends of separate front end architecture via:
+          ActFramework对越来越广泛使用的前后端分离提供了非常顺手的支持:
         </div>
         <ul>
           <li>
-            RESTful support
+            RESTful 支持
           </li>
           <li>
-            Built-in CORS support
+            内置 CORS 支持
           </li>
           <li>
-            Session/Header mapping
+            回话/Header映射
           </li>
         </ul>
       </li>
@@ -143,7 +143,7 @@ public List<Invoice> listUsersInvoices(int user, Date date) {
         </div>
       </li>
       <li>
-        <h6 class="feature">Multi-environment configuration</h6>
+        <h6 class="feature">不同运行环境下的配置支持</h6>
         <div class="feature-desc">
           ActFramework supports the concept of <code>profile</code>. When an application is started with JVM option
           <code>-Dprofile=uat</code>, Act will load the configuration properties files from <code>/conf/uat</code>
@@ -235,39 +235,39 @@ public static class Transaction extends MorphiaModel<Transaction> {
           supports using your favorite template engine including:
           <ul>
             <li>
-              <a href="http://velocity.apache.org/">Velocity</a> through
-              <a href="https://github.com/actframework/act-velocity">Velocity plugin</a>
+              <a href="http://velocity.apache.org/">Velocity</a> 通过
+              <a href="https://github.com/actframework/act-velocity">Velocity插件</a>
             </li>
             <li>
-              <a href="http://freemarker.org/">FreeMarker</a> through
-              <a href="https://github.com/actframework/act-freemarker">FreeMarker plugin</a>
+              <a href="http://freemarker.org/">FreeMarker</a> 通过
+              <a href="https://github.com/actframework/act-freemarker">FreeMarker插件</a>
             </li>
             <li>
-              <a href="http://www.thymeleaf.org/">Thymeleaf</a> through
-              <a href="https://github.com/actframework/act-thymeleaf">Thymeleaf plugin</a>
+              <a href="http://www.thymeleaf.org/">Thymeleaf</a> 通过
+              <a href="https://github.com/actframework/act-thymeleaf">Thymeleaf插件</a>
             </li>
             <li>
-              <a href="https://mustache.github.io/">Mustache</a> through
-              <a href="https://github.com/actframework/act-mustache">Mustache plugin</a>
+              <a href="https://mustache.github.io/">Mustache</a> 通过
+              <a href="https://github.com/actframework/act-mustache">Mustache插件</a>
             </li>
             <li>
-              <a href="http://ibeetl.com/">Beetl</a> through
-              <a href="https://github.com/actframework/act-beetl">Beetl plugin</a>
+              <a href="http://ibeetl.com/">Beetl</a> 通过
+              <a href="https://github.com/actframework/act-beetl">Beetl插件</a>
             </li>
           </ul>
         </div>
         <div class="feature-desc">
-          ActFramework support using multiple template engines in the same projects
+          ActFramework支持在一个项目中使用多种不同的模板引擎
         </div>
       </li>
       <li>
-        <h6 class="feature">Misc features</h6>
+        <h6 class="feature">其他特性</h6>
         <div class="feature-desc">
-          ActFramework provides rich feature set that covers most of your web application development needs:
+          ActFramework提供了丰富的功能足够满足你应用开发的大部分需求：
           <ul>
-            <li>Sending email</li>
-            <li>Schedule jobs</li>
-            <li>Dispatching events</li>
+            <li>发送邮件</li>
+            <li>作业调度</li>
+            <li>事件分派</li>
           </ul>
         </div>
       </li>
@@ -275,14 +275,14 @@ public static class Transaction extends MorphiaModel<Transaction> {
   </div>
 
   <div class="docs-section" id="start">
-    <h6 class="docs-header">Getting start with ActFramework</h6>
+    <h6 class="docs-header">开始使用ActFramework</h6>
     <div>
-      Choose from the following sample project skeleton to start your Act application
+      选择下载一个ActFramework应用示例作为你的项目基础：
     </div>
     <ul>
       @def download(String title, String desc, String file) {
       <li class="download">
-        <div class="header">Hello World</div>
+        <div class="header">@title</div>
         <div class="row">
           <div class="desc nine columns">@desc</div>
           <div class="three columns">
@@ -294,40 +294,37 @@ public static class Transaction extends MorphiaModel<Transaction> {
         </div>
       </li>
       }
-      @download("Hello World", "A bare act app skeleton", "helloworld-0.0.1.zip")
+      @download("Hello World", "一个最简单的ActFramework应用", "helloworld-0.0.1.zip")
     </ul>
   </div>
 
   <div class="docs-section" id="about">
-    <h6 class="docs-header">Why ActFramework?</h6>
+    <h6 class="docs-header">为什么开发ActFramework</h6>
     <p>
-      In short, we need a modern, sleek and mainstream Java MVC framework that you don't get from
-      Spring MVC/PlayFramework/SparkFramework and many others on the market
+      长话短说，我需要一个简洁、优雅而不特立独行的Java MVC框架。我不能从Spring MVC/PlayFramework/SparkFramework以及
+      其他众多的Java框架中得到我所希求的
     </p>
     <p>
-      Long story, back in the end of 2009, I (Gelin Luo, Author of ActFramework) just finished a
-      project in CakePHP as an individual consultant, feel pretty frustrated with PHP and decide
-      to get back to the Java world. I was still not happy with Struts/w Spring and was hunting
-      for other Java MVC frameworks. PlayFramework comes into my sight and I fell in love with it
-      at my first try.
+      背后的故事。大概在2009年底的，作为独立技术顾问，我刚刚结束了一个CakePHP的项目。感觉非常不爽，决定
+      回到我所钟爱的Java世界来。但又对当时处于主宰地位的Spring/Struts之流不是特别满意。所以开始寻找新的
+      Java开发框架。PlayFramework作为当时的新兵进入了我的视野，经过一次简单的尝试，我觉得这就是我一直寻求
+      的东西。
     </p>
     <p>
-      I love PlayFramework v1.x because it is simple, clear and expressive. It brought us a completely
-      different experience in web development with Java. However I don't totally agree with where
-      Play 2.X is heading for, and it looks like I am not the only person with the concern as per this
-      <a href="https://groups.google.com/d/msg/play-framework/AcZs8GXNWUc/IanbqC-c-MkJ" target="_blank">
-        open letter to Play Framework Developers</a>
+      我热爱PlayFramework（仅限v1.x），因为其简单，干净并富于表达力。它给Javaer们带来一种崭新的体验。遗憾
+      的是Play团队在开发2.x版本的时候完全废弃了1.x的代码，并尝试他们新的开发哲学。而我并不是特别感冒。后来
+      发生的<a href="https://groups.google.com/d/msg/play-framework/AcZs8GXNWUc/IanbqC-c-MkJ" target="_blank">
+      事情</a>证明了我并不是唯一这样想的人
     </p>
     <p>
-      I <a target="_blank" href="http://software-lgl.blogspot.com.au/2012/12/thinking-about-creating-new-java-web.html">
-      have thought</a> of rolling out something that could follow the road paved by Play 1.x, something that
-      is simple, clear, expressive and Java (specifically) developer friendly. About one and half year after
-      that I decide I could start the project seriously, and as a result, here comes out this ACT framework,
-      a framework that I can call it "a Final Fantasy of Java web developer"
+      我
+      <a target="_blank" href="http://software-lgl.blogspot.com.au/2012/12/thinking-about-creating-new-java-web.html">
+      开始思考</a>沿着Play 1.x的道路构造一个新的框架。大概一年半之后经过了几个使用Spring的项目的“痛苦”经历，我决定开始这个
+      新框架项目。两年多的开发终于开花结果了：这就是我理想中的MVC框架 ———— ActFramework
     </p>
-    <h6 class="docs-header">Getting Support</h6>
+    <h6 class="docs-header">技术支持</h6>
     <p>
-      TBD
+      正在构建中．．．
     </p>
   </div>
 
