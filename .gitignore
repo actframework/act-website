@@ -7,7 +7,7 @@
 *.jar
 *.war
 *.ear
-lib
+/lib
 target
 .idea
 classes
