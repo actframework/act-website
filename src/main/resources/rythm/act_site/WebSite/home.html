@@ -2,7 +2,14 @@
 
 @section("moreJs") {
 <script src="/js/site.js"></script>
+<script src="/js/prism.js" charset="utf-8"></script>
 }
+
+@section("moreCss") {
+<link rel="stylesheet" href="/css/prism.css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+}
+
 
 <div class="container">
   <section class="hero">
@@ -11,15 +18,15 @@
     <a class="button button-primary" href="#start">Getting Start!</a>
     <div class="value-props row">
       <div class="four columns value-prop">
-        <img class="value-img" src="/img/development.png">
+        <img class="value-img" src="/image/development.png">
         Unbeatable development experience without sacrificing on performance
       </div>
       <div class="four columns value-prop">
-        <img class="value-img" src="/img/tech.png">
+        <img class="value-img" src="/image/tech.png">
         Superb RESTful support plus powerful backend page rendering
       </div>
       <div class="four columns value-prop">
-        <img class="value-img" src="/img/security.png">
+        <img class="value-img" src="/image/security.png">
         Uncompromised security are so easy to achieve
       </div>
     </div>
@@ -31,25 +38,7 @@
     <div class="container">
       <ul class="navbar-list">
         <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
-        <li class="navbar-item">
-          <a class="navbar-link" href="#" data-popover="#docNavPopover">Document</a>
-          <div id="docNavPopover" class="popover">
-            <ul class="popover-list">
-              <li class="popover-item">
-                <a class="popover-link" href="/doc/tutorial">Tutorial</a>
-              </li>
-              <li class="popover-item">
-                <a class="popover-link" href="/doc/concept">Basic Concept</a>
-              </li>
-              <li class="popover-item">
-                <a class="popover-link" href="/doc/advanced">Advanced Topics</a>
-              </li>
-              <li class="popover-item">
-                <a class="popover-link" href="/doc/configuration">Configuration Reference</a>
-              </li>
-            </ul>
-          </div>
-        </li>
+        <li class="navbar-item"><a class="navbar-link" href="/doc/index">Document</a></li>
         <li class="navbar-item"><a class="navbar-link" href="#start">Start</a></li>
         <li class="navbar-item"><a class="navbar-link" href="#about">About</a></li>
       </ul>
@@ -131,7 +120,7 @@
           <a href="http://annotatiomania.com/">crazy annotation stacked code</a>. Instead we make the code to express
           the intention in a natural way and save the use of annotation whenever possible. For example, for the following
           SpringMVC code:
-<pre><code>@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
+<pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
 public List<Invoice> listUsersInvoices(
    @@PathVariable("userId") int user,
    @@RequestParam(value = "date", required = false) Date dateOrNull) {
@@ -139,7 +128,7 @@ public List<Invoice> listUsersInvoices(
 }
 </code></pre>
           The corresponding ActFramework app code is:
-<pre><code>@@GetAction("/user/{user}/invoices")
+<pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
 public List<Invoice> listUsersInvoices(int user, Date date) {
   ...
 }
@@ -181,7 +170,7 @@ public List<Invoice> listUsersInvoices(int user, Date date) {
           It is not unusual for today's application to play with multiple and even heterogeneous database storage. And
           Act has already built-in the support for that. For example:
         </div>
-<pre><code># the database configuration
+<pre class="line-numbers"><code class="language-properties"># the database configuration
 db.instances=mongo,sql
 
 # db1 configurations
@@ -191,7 +180,8 @@ db.mongo.uri=mongodb://localhost/myapp
 db.sql.impl=act.db.ebean.EbeanPlugin
 db.url=jdbc:h2:./myapp
 db.ddl.createOnly=true
-// -- the model that require transaction go SQL
+</code></pre>
+<pre class="line-numbers"><code class="language-java">// -- the model that require transaction go SQL
 @@DB("sql")
 @@Entity(name = "va")
 public class VirtualAccount{
@@ -204,7 +194,8 @@ public class VirtualAccount{
     // balance in cents
     public int balance;
 }
-// -- the model does not require transaction go MongoDB
+</code></pre>
+<pre class="line-numbers"><code class="language-java">// -- the model does not require transaction go MongoDB
 @@DB("mongo")
 @@Entity("trans")
 public static class Transaction extends MorphiaModel<Transaction> {
