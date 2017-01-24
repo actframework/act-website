@@ -89,7 +89,7 @@
           var out = document.getElementById('doc-content');
           if (!out) return
           var old = out.cloneNode(true);
-          out.innerHTML = md.render(val);
+          out.innerHTML = "<br/>" + md.render(val);
           if (typeof emojify != 'undefined') {
               emojify.run(out);
           }
