@@ -4,9 +4,13 @@ import act.app.ActionContext;
 import act.app.App;
 import act.controller.Controller;
 import act.controller.ParamNames;
+import act.handler.RequestHandler;
+import act.handler.RequestHandlerResolverBase;
+import act.handler.builtin.StaticResourceGetter;
 import act.handler.builtin.controller.FastRequestHandler;
 import act.view.RenderTemplate;
 import org.osgl.http.H;
+import org.osgl.mvc.result.NotFound;
 import org.osgl.mvc.result.Redirect;
 import org.osgl.mvc.result.RenderBinary;
 import org.osgl.mvc.result.Result;
@@ -24,11 +28,34 @@ import java.util.Locale;
 @Singleton
 public class DocLoader extends FastRequestHandler {
 
+    public static class DocResourceGetter extends StaticResourceGetter {
+        public DocResourceGetter() {
+            super("/doc");
+        }
+
+        @Override
+        public void handle(ActionContext context) {
+            try {
+                super.handle(context);
+            } catch (NotFound notFound) {
+                // the document doesn't have the version for the current language
+                String path = context.paramVal(ParamNames.PATH);
+                if (path.startsWith("/cn/")) {
+                    path = path.replace("/cn/", "/en/");
+                    super.handle(path, context);
+                } else {
+                    throw notFound;
+                }
+            }
+        }
+    }
+
     public static final String PATH_IMG = "/img";
 
     @Inject
     public DocLoader(App app) {
         app.router().addMapping(H.Method.GET, "/doc", this);
+        app.router().addMapping(H.Method.GET, "/~doc/", new DocResourceGetter());
     }
 
     @Override

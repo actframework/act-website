@@ -4,7 +4,6 @@
 <script src="/js/site.js"></script>
 <script src="/js/markdown-it.js"></script>
 <script src="/js/markdown-it-footnote.js"></script>
-<script src="/js/emojify.js" charset="utf-8"></script>
 <script src="/js/prism.js" charset="utf-8"></script>
 }
 
@@ -35,8 +34,7 @@
 <script>
   $.get("@docPath", function(result) {
       var languageOverrides = {
-          js: 'javascript',
-          html: 'markup'
+          js: 'javascript'
       };
 
       if (typeof emojify != 'undefined') {
@@ -48,19 +46,30 @@
           highlight: function (code, lang) {
               if (languageOverrides[lang]) lang = languageOverrides[lang];
               if (!lang) {
-                  lang = 'none';
+                  lang = 'java';
               }
-              if (lang) {
-                  var codeElement = document.createElement("code");
-                  codeElement.innerHTML = code;
-                  codeElement.className = 'language-' + lang + ' line-numbers';
-                  var preElement = document.createElement("pre");
-                  preElement.appendChild(codeElement);
-                  //return Prism.highlight(code, Prism.languages[lang]);
-                  Prism.highlightElement(codeElement);
-                  return codeElement.innerHTML;
+              if (lang === 'html') {
+                  var grammar = Prism.languages[lang];
+                  var formatted = Prism.highlight(code, grammar, lang);
+                  var match = code.match(/\n(?!$)/g);
+                  var linesNum = match ? match.length + 1 : 1;
+                  var lineNumbersWrapper;
+
+                  var lines = new Array(linesNum + 1);
+                  lines = lines.join('<span></span>');
+
+                  lineNumbersWrapper = document.createElement('span');
+                  lineNumbersWrapper.className = 'line-numbers-rows';
+                  lineNumbersWrapper.innerHTML = lines;
+                  return formatted + lineNumbersWrapper.outerHTML;
               }
-              return code;
+              var codeElement = document.createElement("code");
+              codeElement.innerHTML = code;
+              codeElement.className = 'language-' + lang + ' line-numbers';
+              var preElement = document.createElement("pre");
+              preElement.appendChild(codeElement);
+              Prism.highlightElement(codeElement);
+              return codeElement.innerHTML;
           }
       }).use(markdownitFootnote);
 
@@ -100,9 +109,6 @@
           if (v) {
               id = v[1];
               $h.text(' ' + v[2]);
-          } else {
-              var nm = this.tagName.toLowerCase();
-              id = nm + "_" + names[nm]++;
           }
 
           //$('<a id="' + nm0 + '"></a>').prependTo($h);
