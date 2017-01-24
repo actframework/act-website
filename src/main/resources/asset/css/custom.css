@@ -33,7 +33,8 @@
 .alert {
     border: 1px solid;
     border-radius: 4px;
-    padding: 5px;
+    padding: 10px 15px;
+    margin: 10px 0px;
 }
 .alert.alert-info {
     border-color: #0FA0CE;
@@ -44,10 +45,8 @@ h6.feature {
     font-weight: bold;
 }
 .feature-desc {
-    font-size: 80%;
 }
 .download {
-    font-size: 80%;
     margin: 15px 0px;
 }
 .download .header {
