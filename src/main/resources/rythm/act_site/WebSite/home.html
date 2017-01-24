@@ -39,6 +39,7 @@
       <ul class="navbar-list">
         <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
         <li class="navbar-item"><a class="navbar-link" href="/doc/index">Document</a></li>
+        <li class="navbar-item"><a class="navbar-link" href="#video">Video tutorials</a></li>
         <li class="navbar-item"><a class="navbar-link" href="#start">Start</a></li>
         <li class="navbar-item"><a class="navbar-link" href="#about">About</a></li>
       </ul>
@@ -125,9 +126,10 @@
         <div class="feature-desc">
           Annotation is one of the tool ActFramework used to increase expressiveness. However we do not appreciate
           <a href="http://annotatiomania.com/">crazy annotation stacked code</a>. Instead we make the code to express
-          the intention in a natural way and save the use of annotation whenever possible. For example, for the following
+          the intention in a natural way and save the use of annotation whenever possible. For example, for the
+          following
           SpringMVC code:
-<pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
+          <pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
 public List<Invoice> listUsersInvoices(
    @@PathVariable("userId") int user,
    @@RequestParam(value = "date", required = false) Date dateOrNull) {
@@ -135,7 +137,7 @@ public List<Invoice> listUsersInvoices(
 }
 </code></pre>
           The corresponding ActFramework app code is:
-<pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
+          <pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
 public List<Invoice> listUsersInvoices(int user, Date date) {
   ...
 }
@@ -156,7 +158,8 @@ public List<Invoice> listUsersInvoices(int user, Date date) {
       <li>
         <h6 class="feature">Simple yet powerful database support</h6>
         <div class="feature-desc">
-          ActFramework provides a descent set of database access API via <code>act.db.Dao</code> and relevant interfaces.
+          ActFramework provides a descent set of database access API via <code>act.db.Dao</code> and relevant
+          interfaces.
         </div>
         <ul>
           <li class="feature-desc">
@@ -177,7 +180,7 @@ public List<Invoice> listUsersInvoices(int user, Date date) {
           It is not unusual for today's application to play with multiple and even heterogeneous database storage. And
           Act has already built-in the support for that. For example:
         </div>
-<pre class="line-numbers"><code class="language-properties"># the database configuration
+        <pre class="line-numbers"><code class="language-properties"># the database configuration
 db.instances=mongo,sql
 
 # db1 configurations
@@ -188,7 +191,7 @@ db.sql.impl=act.db.ebean.EbeanPlugin
 db.url=jdbc:h2:./myapp
 db.ddl.createOnly=true
 </code></pre>
-<pre class="line-numbers"><code class="language-java">// -- the model that require transaction go SQL
+        <pre class="line-numbers"><code class="language-java">// -- the model that require transaction go SQL
 @@DB("sql")
 @@Entity(name = "va")
 public class VirtualAccount{
@@ -202,7 +205,7 @@ public class VirtualAccount{
     public int balance;
 }
 </code></pre>
-<pre class="line-numbers"><code class="language-java">// -- the model does not require transaction go MongoDB
+        <pre class="line-numbers"><code class="language-java">// -- the model does not require transaction go MongoDB
 @@DB("mongo")
 @@Entity("trans")
 public static class Transaction extends MorphiaModel<Transaction> {
@@ -266,13 +269,33 @@ public static class Transaction extends MorphiaModel<Transaction> {
         <div class="feature-desc">
           ActFramework provides rich feature set that covers most of your web application development needs:
           <ul>
-            <li>Sending email</li>
-            <li>Schedule jobs</li>
-            <li>Dispatching events</li>
+            <li>
+              <a href="/doc/email">Sending email</a>
+            </li>
+            <li>
+              <a href="/doc/job">Schedule Jobs</a>
+            </li>
+            <li>
+              <a href="/doc/event">Event handling and dispatching</a>
+            </li>
           </ul>
         </div>
       </li>
     </ul>
+  </div>
+
+  <div class="docs-section" id="video">
+    <h6 class="docs-header">For beginners</h6>
+    <ol>
+      <li>
+        <div>Creating a helloworld ActFramework app with Eclipse from scratch</div>
+        <iframe class="tutorial" id="v_hellworld_eclipse" src="https://www.youtube.com/embed/s_nGB3Ke7vo"></iframe>
+      </li>
+      <li>
+        <div>Adding QRCode and Barcode generator on your Helloworld sample</div>
+        <iframe class="tutorial" id="v_hellworld_qrcode" src="https://www.youtube.com/embed/s_nGB3Ke7vo"></iframe>
+      </li>
+    </ol>
   </div>
 
   <div class="docs-section" id="start">
@@ -347,4 +370,8 @@ public static class Transaction extends MorphiaModel<Transaction> {
     $('body').on('click', '#go_zh', function () {
         return switchLocale('zh_CN');
     });
+    $('body').on('iframe.tutorial', 'click', function () {
+        var v = $(this).data("v");
+        window.open("https://youtube.com/watch?v=" + v);
+    })
 </script>

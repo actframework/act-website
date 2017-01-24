@@ -24,6 +24,15 @@
     list-style: circle;
     padding-left: 1.5rem;
 }
+iframe.tutorial {
+    width: 800px;
+    height: 600px;
+    border: none;
+}
+#video ol {
+    list-style: decimal;
+    padding-left: 14px;
+}
 #doc-content {padding-top: 20px;}
 #doc-content h1 { font-size: 2.4rem; line-height: 1.2;  letter-spacing: -.1rem;}
 #doc-content h2 { font-size: 1.8rem; line-height: 1.25; letter-spacing: -.1rem; }
