@@ -24,9 +24,6 @@
         <li class="navbar-item"><a class="navbar-link" href="/#support">Support</a></li>
         <li class="navbar-item"><a class="navbar-link" href="/#about">About</a></li>
       </ul>
-      <form action="/~i18n/locale" id="form_i18n" method="post">
-        <input type="hidden" name="act_locale" value="zh_CN" id="act_locale">
-      </form>
       <ul class="navbar-list u-pull-right">
         <li class="navbar-item"><a id="go_zh" class="navbar-link" href="#">中文</a></li>
         <li class="navbar-item u-pull-right"><a id="go_en" class="navbar-link" href="#" title="English">EN</a></li>
@@ -135,8 +132,9 @@
       });
 
       function switchLocale(locale) {
-          $('#act_locale').val(locale);
-          $('#form_i18n').get(0).submit();
+          $.post('/~i18n/locale', {act_locale: locale}, function() {
+              window.location.reload();
+          })
           return false;
       }
 
