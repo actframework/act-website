@@ -107,6 +107,13 @@
                   return;
               }
           }
+
+          if (window.location.hash) {
+              setTimeout(function() {
+                  $to = $(window.location.hash);
+                  $('html,body').animate({scrollTop: $to.offset().top},'slow');
+              }, 1);
+          }
       }
 
       setOutput(result);

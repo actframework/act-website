@@ -60,6 +60,9 @@ h6.feature {
 }
 .feature-desc {
 }
+.hidden {
+display: none
+}
 .download {
     margin: 15px 0px;
 }
@@ -159,6 +162,9 @@ h6.feature {
         height: 100%;
         left: 0;
         max-height: none; }
+    section[id] {
+        padding-top: 7rem;
+    }
 }
 
 /* Larger than tablet */

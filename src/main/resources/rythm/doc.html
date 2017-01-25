@@ -91,9 +91,6 @@
           if (!out) return
           var old = out.cloneNode(true);
           out.innerHTML = md.render(val);
-          if (typeof emojify != 'undefined') {
-              emojify.run(out);
-          }
 
           var allold = old.getElementsByTagName("*");
           if (allold === undefined) return;
@@ -106,6 +103,13 @@
                   out.scrollTop = allnew[i].offsetTop;
                   return;
               }
+          }
+
+          if (window.location.hash) {
+              setTimeout(function() {
+                  $to = $(window.location.hash);
+                  $('html,body').animate({scrollTop: $to.offset().top},'slow');
+              }, 1);
           }
       }
 

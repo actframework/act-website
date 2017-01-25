@@ -8,6 +8,11 @@
 @section("moreCss") {
 <link rel="stylesheet" href="/css/prism.css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css">
+<style>
+  h6.feature[data-link] {
+    cursor: pointer;
+  }
+</style>
 }
 
 
@@ -54,6 +59,7 @@
     </div>
   </nav>
 
+
   <div class="docs-section" id="intro">
     <h6 class="docs-header">ActFramework 特性</h6>
     <p>
@@ -61,124 +67,180 @@
     </p>
     <ul>
       <li>
-        <h6 class="feature">
+        <h6 class="feature" data-link="full-stack">
           全栈式框架
+          <i class="fa fa-angle-right indicator"></i>
         </h6>
-        <div class="feature-desc">
+        <div class="feature-desc hidden full-stack">
           ActFramework的应用都有自己的main方法, 通常在数秒之内完成启动
-        </div>
-        <div class="feature-desc alert alert-info">
-          <i class="fa fa-info-circle"></i> Act不是一个Servlet架构的框架, Act应用不能部署到Servlet容器中
-        </div>
-      </li>
-      <li>
-        <h6 class="feature">无与伦比的开发体验</h6>
-        <div class="feature-desc">
-          Act support hot-reload application and it takes less than a second to reload
-          your normal sized app (in our 10K LOC app, takes around 500ms to reload app). Hot reload happens
-          when your Java source code, template code or configuration files has been changed
+
+          <div class="feature-desc alert alert-info">
+            <i class="fa fa-info-circle indicator"></i> Act不是一个Servlet架构的框架, Act应用不能部署到Servlet容器中
+          </div>
         </div>
       </li>
       <li>
-        <h6 class="feature">依赖注入</h6>
-        <div class="feature-desc">
-          Fully JSR 330 support and even more:
+        <h6 class="feature" data-link="dev-exp">
+          无与伦比的开发体验
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden dev-exp">
+          在开发模式下Act支持热加载。在开发模式下，收到任何请求的时候Act会扫描项目的`src`目录，项目中的任何java源代码、
+          模板源码或者配置文件有变动，Act会废弃掉当前的`ApplicationClassLoader`，重新编译整个项目，并加载到一个新的
+          `ApplicationClassLoader`中。这个过程非常快，我们一个上万行源码的项目，热加载的过程大概在500ms完成。
         </div>
-        <ul>
-          <li>Inject parameter for methods including action handler, mail sender, job method etc</li>
-          <li>Inject collections</li>
-          <li>Customizable injection tag, e.g. <code>@@LoginUser</code></li>
-        </ul>
       </li>
       <li>
-        <h6 class="feature">单页/移动应用支持</h6>
-        <div class="feature-desc">
-          ActFramework对越来越广泛使用的前后端分离提供了非常顺手的支持:
-        </div>
-        <ul>
-          <li>
-            RESTful 支持
-          </li>
-          <li>
-            内置 CORS 支持
-          </li>
-          <li>
-            回话/Header映射
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h6 class="feature">绝不忽略的安全性</h6>
-        <div class="feature-desc">
-          ActFramework is a security aware framework, it built uncompromised security support into your application
+        <h6 class="feature" data-link="di">
+          依赖注入
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden di">
+          Act通过<a href="https://github.com/osglworks/java-di">Genie</a>提供对JSR 330完整支持，并做了一些扩展:
           <ul>
-            <li>Session cookie is secure and http only, payload is signed and encrypted (optionally)</li>
-            <li>Enable CSRF prevention with just one configuration item</li>
-            <li>XSS prevention: Rythm engine escape variable output by default</li>
-            <li>Implementing your authentication/authorisation/accounting framework using
-              <a href="https://github.com/actframework/act-aaa-plugin">AAA plugin</a>
+            <li>方法参数注入，包括action handler, mail sender, job 方法等</li>
+            <li>注入集合类型，比如所有实现某个借口的类</li>
+            <li>自定义注入标记, 比如<code>@@LoginUser</code></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <h6 class="feature" data-link="spa">
+          SPA/移动应用支持
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden spa">
+          现在越来越多的项目采用前后端分离的开发架构，并通过RESTful的接口使用JSON通讯。ActFramework对此
+          提供了丰富的支持：
+          <ul>
+            <li>
+              RESTful支持
+            </li>
+            <li>
+              内置CORS支持
+            </li>
+            <li>
+              Session/HTTP Header 映射
             </li>
           </ul>
         </div>
       </li>
       <li>
-        <h6 class="feature">使用但不过分依赖注解</h6>
-        <div class="feature-desc">
-          Annotation is one of the tool ActFramework used to increase expressiveness. However we do not appreciate
-          <a href="http://annotatiomania.com/">crazy annotation stacked code</a>. Instead we make the code to express
-          the intention in a natural way and save the use of annotation whenever possible. For example, for the following
-          SpringMVC code:
-<pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
+        <h6 class="feature" data-link="security">
+          绝不忽略的安全
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden security">
+          安全！安全！安全！重要的话重复三遍
+          ActFramework将安全构建在你的应用程序中
+          <ul>
+            <li>Session cookie是http only (javascript不可读写), secure(在产品模式下，只能用于https链接);
+              payload有hash签名，还可以选择加密</li>
+            <li>在配置文件中加上`csrf=true`来打开CSRF保护机制</li>
+            <li>XSS保护: Rythm模板引擎默认escape变量输出</li>
+            <li>
+              <a href="https://github.com/actframework/act-aaa-plugin">AAA plugin</a>提供最为方便
+              灵活的AAA(认证/授权/记账)机制
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <h6 class="feature" data-link="anno">
+          使用但不过分依赖注解
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden anno">
+          <p>
+            ActFramework使用注解来提高应用程序的表达力。但是我们不赞成<a href="http://annotatiomania.com/">过度使用注解</a>
+            我们认为当代码提供足够表达力的时候就不需要注解，所谓画蛇添足不外如是。
+          </p>
+          <div>例如下面的SpringMVC代码:</div>
+          <pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
 public List<Invoice> listUsersInvoices(
    @@PathVariable("userId") int user,
    @@RequestParam(value = "date", required = false) Date dateOrNull) {
   ...
 }
 </code></pre>
-          The corresponding ActFramework app code is:
-<pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
+          提供相同功能的ActFramework代码为:
+          <pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
 public List<Invoice> listUsersInvoices(int user, Date date) {
   ...
 }
 </code></pre>
-          No doubt ActFramework code is simpler and clearer when comparing with SpringMVC code.
+          显而易见，Act的代码更加简洁清楚
         </div>
       </li>
       <li>
-        <h6 class="feature">不同运行环境下的配置支持</h6>
-        <div class="feature-desc">
-          ActFramework supports the concept of <code>profile</code>. When an application is started with JVM option
-          <code>-Dprofile=uat</code>, Act will load the configuration properties files from <code>/conf/uat</code>
-          folder after all properties files has been loaded from <code>/conf/common</code> folder. This mechanism allows
-          app developer to create common configuration set and adjust parts of configuration items using profile
-          configuration set.
+        <h6 class="feature" data-link="conf">
+          不同运行环境下的配置支持
+          <i class="fa fa-angle-right"></i>
+        </h6>
+        <div class="feature-desc hidden conf">
+          ActFramework支持<code>profile</code>的概念，让你更方便地组织在不同运行环境下的配置文件
+          下面的配置文件目录结构来自我们一个真实项目：
+          <pre><code>resources
+├── conf
+│   ├── common
+│   │   ├── app.properties
+│   │   ├── db.properties
+│   │   ├── mail.properties
+│   │   ├── payment.properties
+│   │   └── social.properties
+│   ├── local-no-ui
+│   │   ├── app.properties
+│   │   ├── db.properties
+│   │   └── port.properties
+│   ├── local-sit
+│   │   └── app.properties
+│   ├── local-ui
+│   │   ├── app.properties
+│   │   └── db.properties
+│   ├── sit
+│   │   ├── app.properties
+│   │   └── db.properties
+│   └── uat
+...</code></pre>
+          假设你的项目部署到了你的UAT(User Acceptance Test)服务器，你可以使用JVM参数 <code>-Dprofile=uat</code>
+          来启动应用。ActFramework会按照一下序列来加载配置：
+          <ol>
+            <li>Read <code>/resources/conf/common</code>目录中的所有<code>.properties</code>文件</li>
+            <li>Read <code>/resources/conf/uat</code>目录中的所有<code>.properties</code>文件</li>
+          </ol>
+          这样ActFramework使用<code>uat</code>profile下面的配置项来覆盖<code>common</code>下面的配置项。
+          而<code>common</code>下面没有被覆盖的配置项则继续有效。
         </div>
       </li>
       <li>
-        <h6 class="feature">Simple yet powerful database support</h6>
-        <div class="feature-desc">
-          ActFramework provides a descent set of database access API via <code>act.db.Dao</code> and relevant interfaces.
+        <h6 class="feature" data-link="db">
+          方便而强大的数据库访问
+          <i class="fa fa-angle-right"></i>
+        </h6>
+        <div class="feature-desc hidden db">
+          ActFramework 通过<code>act.db.Dao</code>和相关接口提供一套方便而强大的数据库访问机制
+          <ul>
+            <li class="feature-desc">
+              <a href="https://github.com/actframework/act-ebean">act-ebean插件</a>基于灵活易用的
+              <a href="http://ebean-orm.github.io/">ebean ORM</a>库实现了Act的数据库访问。这个插件
+              可以用来访问SQL数据库
+            </li>
+            <li class="feature-desc">
+              <a href="https://github.com/actframework/act-morphia">act-morphia插件</a>基于MongoDB
+              官方提供的<a href="https://mongodb.github.io/morphia/">Morphia</a>库。这个插件可以用来
+              访问MongoDB文档数据库
+            </li>
+          </ul>
         </div>
-        <ul>
-          <li class="feature-desc">
-            <a href="https://github.com/actframework/act-ebean">act-ebean</a> plugin implemented the ActFramework
-            database layer based on the fast and simple <a href="http://ebean-orm.github.io/">ebean ORM</a> library,
-            which works with most SQL database solutions on the market
-          </li>
-          <li class="feature-desc">
-            <a href="https://github.com/actframework/act-morphia">act-morphia</a> plugin implemented the ActFramework
-            database layer based on the official <a href="https://mongodb.github.io/morphia/">Morphia</a> document
-            mapper for MongoDB
-          </li>
-        </ul>
       </li>
       <li>
-        <h6 class="feature">Multiple database support</h6>
-        <div class="feature-desc">
-          It is not unusual for today's application to play with multiple and even heterogeneous database storage. And
-          Act has already built-in the support for that. For example:
-        </div>
-<pre class="line-numbers"><code class="language-properties"># the database configuration
+        <h6 class="feature" data-link="multi-db">
+          多数据源支持
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden multi-db">
+          访问不同的数据源对于今天的应用来讲并不罕见。Act内置多数据源支持。下面是代码示例：
+          <pre class="line-numbers"><code class="language-properties"># 数据库配置文件
 db.instances=mongo,sql
 
 # db1 configurations
@@ -189,7 +251,7 @@ db.sql.impl=act.db.ebean.EbeanPlugin
 db.url=jdbc:h2:./myapp
 db.ddl.createOnly=true
 </code></pre>
-<pre class="line-numbers"><code class="language-java">// -- the model that require transaction go SQL
+          <pre class="line-numbers"><code class="language-java">// -- 这个model需要事务支持，因此使用SQL数据源：
 @@DB("sql")
 @@Entity(name = "va")
 public class VirtualAccount{
@@ -203,7 +265,7 @@ public class VirtualAccount{
     public int balance;
 }
 </code></pre>
-<pre class="line-numbers"><code class="language-java">// -- the model does not require transaction go MongoDB
+          <pre class="line-numbers"><code class="language-java">// -- 不需要事务的model我们尽可能使用MongoDB：
 @@DB("mongo")
 @@Entity("trans")
 public static class Transaction extends MorphiaModel<Transaction> {
@@ -223,48 +285,49 @@ public static class Transaction extends MorphiaModel<Transaction> {
     ...
 }
 </code></pre>
-        <div class="feature-desc">
-          The above code shows how to configure two databases with one for SQL database and the other one for MongoDB.
-          Once you have two database configured, it is super easy to map your model class to database via the
-          <code>@@DB</code> annotation
+          以上代码演示了如何在配置文件里设置多数据源，以及如果在model代码里使用<code>@@DB</code>注解指定数据源
         </div>
       </li>
       <li>
-        <h6 class="feature">Powerful view architecture with multiple render engine support</h6>
-        <div class="feature-desc">
-          For more traditional application that require server side page rendering,
-          ActFramework by default use the <a href="http://rythmengine.org/">Rythm Template Engine</a>. And it
-          supports using your favorite template engine including:
+        <h6 class="feature" data-link="view">
+          强大的视图架构以及多模板引擎支持
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden view">
+          虽然Act是对RESTful和前后端分离非常友好的框架，对于传统类型服务器端页面生成也提供了非常好的支持。
+          ActFramework内置了强大易用的<a href="http://rythmengine.org/">Rythm模板引擎</a>，同时也提供
+          其它常用模板引擎的插件：
           <ul>
             <li>
-              <a href="http://velocity.apache.org/">Velocity</a> 通过
+              <a href="http://velocity.apache.org/">Velocity</a>支持：
               <a href="https://github.com/actframework/act-velocity">Velocity插件</a>
             </li>
             <li>
-              <a href="http://freemarker.org/">FreeMarker</a> 通过
+              <a href="http://freemarker.org/">FreeMarker</a>支持：
               <a href="https://github.com/actframework/act-freemarker">FreeMarker插件</a>
             </li>
             <li>
-              <a href="http://www.thymeleaf.org/">Thymeleaf</a> 通过
+              <a href="http://www.thymeleaf.org/">Thymeleaf</a>支持：
               <a href="https://github.com/actframework/act-thymeleaf">Thymeleaf插件</a>
             </li>
             <li>
-              <a href="https://mustache.github.io/">Mustache</a> 通过
+              <a href="https://mustache.github.io/">Mustache</a>支持：
               <a href="https://github.com/actframework/act-mustache">Mustache插件</a>
             </li>
             <li>
-              <a href="http://ibeetl.com/">Beetl</a> 通过
+              <a href="http://ibeetl.com/">Beetl</a>支持：
               <a href="https://github.com/actframework/act-beetl">Beetl插件</a>
             </li>
           </ul>
-        </div>
-        <div class="feature-desc">
-          ActFramework支持在一个项目中使用多种不同的模板引擎
+          ActFramework支持在项目中同时使用多种不同的模板引擎
         </div>
       </li>
       <li>
-        <h6 class="feature">其他特性</h6>
-        <div class="feature-desc">
+        <h6 class="feature" data-link="misc">
+          其它特性
+          <i class="fa fa-angle-right indicator"></i>
+        </h6>
+        <div class="feature-desc hidden misc">
           ActFramework提供了丰富的功能足够满足你应用开发的大部分需求：
           <ul>
             <li>
@@ -274,13 +337,14 @@ public static class Transaction extends MorphiaModel<Transaction> {
               <a href="/doc/job">作业调度</a>
             </li>
             <li>
-              <a href="/doc/event">事件分派</a>
+              <a href="/doc/event">事件处理</a>
             </li>
           </ul>
         </div>
       </li>
     </ul>
   </div>
+
 
   <div class="docs-section" id="video">
     <h6 class="docs-header">初学者教程</h6>
@@ -384,4 +448,14 @@ public static class Transaction extends MorphiaModel<Transaction> {
     $('body').on('click', '#go_zh', function () {
         return switchLocale('zh_CN');
     });
+    $('body').on('click', 'h6.feature[data-link]', function() {
+        $me = $(this);
+        var expanded = $me.next().is(':visible');
+        $('h6.feature[data-link]').next().hide();
+        $('h6.feature[data-link]').find('i.indicator').addClass('fa-angle-right');
+        if (!expanded) {
+            $me.next().fadeIn();
+            $me.find('i.indicator').removeClass('fa-angle-right').addClass('fa-angel-down');
+        }
+    })
 </script>
