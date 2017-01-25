@@ -57,7 +57,7 @@
               if (!lang) {
                   lang = 'java';
               }
-              if (lang === 'html') {
+              if (lang === 'html' || lang == "xml") {
                   var grammar = Prism.languages[lang];
                   var formatted = Prism.highlight(code, grammar, lang);
                   var match = code.match(/\n(?!$)/g);
