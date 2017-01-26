@@ -78,13 +78,21 @@
       </li>
       <li>
         <h6 class="feature" data-link="dev-exp">
-          无与伦比的开发体验
+          无与伦比的开发体验 ． 卓越的性能
           <i class="fa fa-angle-right indicator"></i>
         </h6>
         <div class="feature-desc hidden dev-exp">
-          在开发模式下Act支持热加载。在开发模式下，收到任何请求的时候Act会扫描项目的`src`目录，项目中的任何java源代码、
-          模板源码或者配置文件有变动，Act会废弃掉当前的`ApplicationClassLoader`，重新编译整个项目，并加载到一个新的
-          `ApplicationClassLoader`中。这个过程非常快，我们一个上万行源码的项目，热加载的过程大概在500ms完成。
+          <div>
+            在开发模式下Act支持热加载。在开发模式下，收到任何请求的时候Act会扫描项目的`src`目录，项目中的任何java源代码、
+            模板源码或者配置文件有变动，Act会废弃掉当前的<code>ApplicationClassLoader</code>，重新编译整个项目，并加载到一个新的
+            <code>ApplicationClassLoader</code>中。这个过程非常快，我们一个上万行源码的项目，热加载的过程大概在500ms完成。
+          </div>
+          <div>
+            虽然开发体验为ActFramework的最高优先级，我们同时也非常重视系统性能。根据
+            <a href="https://github.com/networknt/light-java-example/tree/master/performance">这个</a>
+            benchmark项目，对于一个最简单的HelloWorld应用, ActFramework拥有双倍于Bootique + Jetty/Jersey的吞吐量,
+            而更是Spring Boot Undertow的三倍，Dropwizard和Spring Boot Tomcat三倍以上的吞吐量。
+          </div>
         </div>
       </li>
       <li>
