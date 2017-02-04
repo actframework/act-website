@@ -2,7 +2,6 @@ package act_site;
 
 import act.cli.Command;
 import act.cli.Required;
-import act.db.morphia.MorphiaAdaptiveRecord;
 import act.db.morphia.MorphiaDao;
 import act.db.morphia.MorphiaModel;
 
@@ -27,8 +26,9 @@ public class Skeleton extends MorphiaModel<Skeleton> {
     public static void add(
             @Required("specify name") String name,
             @Required("specify description") String desc,
-            @Required("specify file name") String fileName
+            @Required("specify file name") String fileName,
+            MorphiaDao<Skeleton> dao
     ) {
-        Skeleton.dao().save(new Skeleton(name, desc, fileName));
+        dao.save(new Skeleton(name, desc, fileName));
     }
 }
