@@ -13,4 +13,5 @@ target
 classes
 *.iml
 deploy
+*.log
 **/.act*
