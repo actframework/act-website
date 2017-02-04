@@ -4,6 +4,7 @@ import act.Act;
 import act.Version;
 import act.app.conf.AppConfigurator;
 import act.boot.app.RunApp;
+import act.db.morphia.MorphiaDao;
 import act.util.ActContext;
 import act.view.TemplatePathResolver;
 import org.osgl.mvc.annotation.GetAction;
@@ -33,7 +34,9 @@ public class WebSite {
     }
 
     @GetAction
-    public void home() {
+    public void home(MorphiaDao<Skeleton> skeletonDao) {
+        Iterable<Skeleton> skeletons = skeletonDao.findAll();
+        render(skeletons);
     }
 
     public static void main(String[] args) throws Exception {
