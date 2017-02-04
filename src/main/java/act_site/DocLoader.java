@@ -28,34 +28,9 @@ import java.util.Locale;
 @Singleton
 public class DocLoader extends FastRequestHandler {
 
-    public static class DocResourceGetter extends StaticResourceGetter {
-        public DocResourceGetter() {
-            super("/doc");
-        }
-
-        @Override
-        public void handle(ActionContext context) {
-            try {
-                super.handle(context);
-            } catch (NotFound notFound) {
-                // the document doesn't have the version for the current language
-                String path = context.paramVal(ParamNames.PATH);
-                if (path.startsWith("/cn/")) {
-                    path = path.replace("/cn/", "/en/");
-                    super.handle(path, context);
-                } else {
-                    throw notFound;
-                }
-            }
-        }
-    }
-
-    public static final String PATH_IMG = "/img";
-
     @Inject
     public DocLoader(App app) {
         app.router().addMapping(H.Method.GET, "/doc", this);
-        app.router().addMapping(H.Method.GET, "/~doc/", new DocResourceGetter());
     }
 
     @Override

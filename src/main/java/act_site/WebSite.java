@@ -1,5 +1,7 @@
 package act_site;
 
+import act.Act;
+import act.Version;
 import act.app.conf.AppConfigurator;
 import act.boot.app.RunApp;
 import act.util.ActContext;
@@ -35,7 +37,7 @@ public class WebSite {
     }
 
     public static void main(String[] args) throws Exception {
-        RunApp.start(WebSite.class);
+        Act.start("Act", Version.appVersion(), WebSite.class);
     }
 
 }
