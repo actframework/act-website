@@ -69,7 +69,7 @@ public class DocLoader extends FastRequestHandler {
         Locale locale = context.locale(true);
         String sLocale = locale.getLanguage();
         String lang = ("zh".equals(sLocale)) ? "cn" : "en";
-        StringBuilder sb = S.builder("/~doc/").append(lang);
+        StringBuilder sb = S.builder("https://raw.githubusercontent.com/actframework/act-doc/master/").append(lang);
         if (path.contains("#")) {
             String[] pa = path.split("#");
             String pa1 = pa[0];
