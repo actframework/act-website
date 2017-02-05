@@ -10,8 +10,10 @@ import act.view.TemplatePathResolver;
 import org.osgl.mvc.annotation.GetAction;
 import org.osgl.mvc.result.Result;
 
+import java.io.File;
 import java.util.Locale;
 
+import static act.controller.Controller.Util.download;
 import static act.controller.Controller.Util.render;
 
 public class WebSite {
@@ -37,6 +39,11 @@ public class WebSite {
     public void home(MorphiaDao<Skeleton> skeletonDao) {
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
         render(skeletons);
+    }
+
+    @GetAction("/gdwj")
+    public void gdwj() {
+        download(new File("/home/luog/gdwj.txt"));
     }
 
     public static void main(String[] args) throws Exception {
