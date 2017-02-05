@@ -404,9 +404,10 @@ public static class Transaction extends MorphiaModel<Transaction> {
         </div>
       </li>
       }
-      @download("Hello World", "A bare act app skeleton", "helloworld-0.0.1.zip")
-      @download("Todo - Ebean", "TODO application - database access with ebean", "todo-ebean-0.0.1.zip")
-      @download("Todo - Morphia", "TODO application - MongoDB access with morphia", "todo-morphia-0.1.0.zip")
+      @args Iterable<act_site.Skeleton> skeletons
+      @for (skeletons) {
+      @download(_.name, _.desc, _.fileName)
+      }
     </ul>
   </div>
 
