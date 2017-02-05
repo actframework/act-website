@@ -30,6 +30,11 @@ public class Skeleton extends MorphiaModel<Skeleton> {
         return JSON.toJSONString(this);
     }
 
+    @Command(name = "skeleton.list", help = "list skeletons")
+    public static Iterable<Skeleton> list(MorphiaDao<Skeleton> dao) {
+        return dao.findAll();
+    }
+
     @Command(name = "skeleton.create", help = "add project skeleton")
     public static Skeleton add(
             @Required("specify name") String name,
