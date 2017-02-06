@@ -89,6 +89,7 @@ public class Video extends MorphiaModel<Video> {
     }
 
     @Command(name = "video.source", help = "set video source")
+    @JsonView
     public static Video setSource(
             @Required("specify video id") String id,
             @Required("specify language") String lang,
