@@ -36,9 +36,10 @@ public class WebSite {
     }
 
     @GetAction
-    public void home(MorphiaDao<Skeleton> skeletonDao) {
+    public void home(MorphiaDao<Skeleton> skeletonDao, Video.Dao videoDao) {
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
-        render(skeletons);
+        Iterable<Video> videos = videoDao.findAll();
+        render(skeletons, videos);
     }
 
     @GetAction("/gdwj")

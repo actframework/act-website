@@ -364,7 +364,17 @@ public static class Transaction extends MorphiaModel<Transaction> {
   </div>
 
   <div class="docs-section" id="video">
-    <h6 class="docs-header">Video -  beginners</h6>
+    <h6 class="docs-header">Videos</h6>
+    @def videoItem(Video video) {
+      @{
+        Video.Source source = video.source("en")
+      }
+      <li>
+        <div>@video.desc</div>
+        <iframe class="tutorial" id="source.id" src="source.embeddedUrl()"></iframe>
+      </li>
+    }
+    @args Iterable<Video> videos
     <ol>
       <li>
         <div>Creating a helloworld ActFramework app with Eclipse from scratch</div>
@@ -378,6 +388,11 @@ public static class Transaction extends MorphiaModel<Transaction> {
         <div>Adding QRCode and Barcode generator on your Helloworld sample</div>
         <iframe class="tutorial" id="v_hellworld_qrcode" src="https://www.youtube.com/embed/s_nGB3Ke7vo"></iframe>
       </li>
+      @**
+      @for (videos) {
+      @videoItem(_)
+      }
+      **@
     </ol>
   </div>
 
