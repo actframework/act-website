@@ -366,7 +366,7 @@ public static class Transaction extends MorphiaModel<Transaction> {
     <h6 class="docs-header">视频</h6>
     @def videoItem(Video video) {
       @{
-        Video.Source source = video.source("en")
+        Video.Source source = video.source("cn")
       }
       @if (source) {
         <li>
