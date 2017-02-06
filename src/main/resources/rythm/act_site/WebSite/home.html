@@ -369,10 +369,13 @@ public static class Transaction extends MorphiaModel<Transaction> {
       @{
         Video.Source source = video.source("en")
       }
-      <li>
-        <div>@video.desc</div>
-        <iframe class="tutorial" id="source.id" src="source.embeddedUrl()"></iframe>
-      </li>
+      @if (source) {
+        <li>
+          <a name="@video.source.id"></a>
+          <div>@video.desc</div>
+          <iframe class="tutorial" id="source.id" src="source.embeddedUrl()"></iframe>
+        </li>
+      }
     }
     @args Iterable<Video> videos
     <ol>

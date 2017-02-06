@@ -363,24 +363,24 @@ public static class Transaction extends MorphiaModel<Transaction> {
 
 
   <div class="docs-section" id="video">
-    <h6 class="docs-header">初学者教程</h6>
+    <h6 class="docs-header">视频</h6>
+    @def videoItem(Video video) {
+      @{
+        Video.Source source = video.source("en")
+      }
+      @if (source) {
+        <li>
+          <a name="@video.source.id"></a>
+          <div>@video.desc</div>
+          <iframe class="tutorial" id="source.id" src="source.embeddedUrl()"></iframe>
+        </li>
+      }
+    }
+    @args Iterable<Video> videos
     <ol>
-      <li>
-        <div>使用Eclipse从头开始创建一个ActFramework的HelloWorld程序</div>
-        <iframe class="tutorial" id="v_hellworld_eclipse"
-                src="http://www.tudou.com/programs/view/html5embed.action?code=fZqqkFacfzA&autoPlay=false&playType=AUTO">
-        </iframe>
-      </li>
-      <li>
-        <div>Create a TODO application (Morphia/Mongo version)</div>
-        <iframe class="tutorial" id="v_todo_morphia" src="http://player.youku.com/embed/XMjQ5ODY2OTM3Mg"></iframe>
-      </li>
-      <li>
-        <div>在Helloworld程序上添加QRCode和Barcode生成器</div>
-        <iframe class="tutorial" id="v_hellworld_qrcode"
-                src="http://www.tudou.com/programs/view/html5embed.action?code=8KTZDHNkMl0&autoPlay=false&playType=AUTO">
-        </iframe>
-      </li>
+      @for (videos) {
+      @videoItem(_)
+      }
     </ol>
   </div>
 
