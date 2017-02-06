@@ -7,6 +7,7 @@ import act.db.morphia.MorphiaDao;
 import act.db.morphia.MorphiaModel;
 import act.util.SimpleBean;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static act.controller.Controller.Util.notFoundIfNull;
@@ -67,7 +68,7 @@ public class Video extends MorphiaModel<Video> {
     public String title;
     public String desc;
     // Map source to a language
-    public Map<String, Source> sources;
+    public Map<String, Source> sources = new HashMap<>();
 
     public boolean hasSource(String lang) {
         return sources.containsKey(lang);
