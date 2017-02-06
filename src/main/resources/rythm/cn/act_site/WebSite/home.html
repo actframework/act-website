@@ -371,8 +371,12 @@ public static class Transaction extends MorphiaModel<Transaction> {
       @if (source) {
         <li>
           <a name="@source.id"></a>
-          <div>@video.desc</div>
-          <iframe class="tutorial" id="@source.id" src="@source.embeddedUrl()"></iframe>
+          <div>
+            @video.desc
+            <a target="_blank" href="@source.siteUrl()">
+              <i class="fa fa-play"></i>
+            </a>
+          </div>
         </li>
       }
     }
