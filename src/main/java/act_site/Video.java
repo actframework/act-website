@@ -5,6 +5,7 @@ import act.cli.JsonView;
 import act.cli.Required;
 import act.db.morphia.MorphiaDao;
 import act.db.morphia.MorphiaModel;
+import act.util.PropertySpec;
 import act.util.SimpleBean;
 
 import java.util.HashMap;
@@ -76,6 +77,12 @@ public class Video extends MorphiaModel<Video> {
 
     public Source source(String lang) {
         return sources.get(lang);
+    }
+
+    @Command(name = "video.list", help = "list all videos")
+    @JsonView
+    public Iterable<Video> list(Dao dao) {
+        return dao.findAll();
     }
 
     @Command(name = "video.create", help = "create video record")
