@@ -4,13 +4,14 @@ import act.cli.Command;
 import act.cli.JsonView;
 import act.cli.Required;
 import act.db.morphia.MorphiaDao;
+import act.db.morphia.MorphiaModel;
 import act.util.SimpleBean;
 
 import java.util.Map;
 
 import static act.controller.Controller.Util.notFoundIfNull;
 
-public class Video extends MorphiaDao<Video> {
+public class Video extends MorphiaModel<Video> {
 
     public enum Platform {
         YOUTUBE() {
