@@ -90,13 +90,13 @@ public class Video extends MorphiaDao<Video> {
     public static Video setSource(
             @Required("specify video id") String id,
             @Required("specify language") String lang,
-            @Required("specify video platform ID") String platformId,
+            @Required("specify video platform ID") String videoId,
             @Required("specify platform") Platform platform,
             Dao dao
     ) {
         Video video = dao.findById(id);
         notFoundIfNull(video);
-        return dao.updateSource(video, lang, platformId, platform);
+        return dao.updateSource(video, lang, videoId, platform);
     }
 
     public static class Dao extends MorphiaDao<Video> {
