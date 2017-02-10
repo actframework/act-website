@@ -282,3 +282,6 @@ display: none
         border-bottom-color: #33C3F0; }
 }
 
+a > i.fa {
+    color: #CC3300;
+}
