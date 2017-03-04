@@ -42,11 +42,6 @@ public class WebSite {
         render(skeletons, videos);
     }
 
-    @GetAction("/gdwj")
-    public void gdwj() {
-        download(new File("/home/luog/gdwj.txt"));
-    }
-
     public static void main(String[] args) throws Exception {
         Act.start("Act", Version.appVersion(), WebSite.class);
     }
