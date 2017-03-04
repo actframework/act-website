@@ -60,12 +60,20 @@
     <h6 class="docs-header">News</h6>
     <ul>
       <li>
+        A <a href="http://www.todobackend.com/">TodoBackend</a> project written in ActFramework: http://github.com/greenlaw110/todomvc-act
+      </li>
+      <li>
         An new <a href="https://github.com/greenlaw110/simple-webframework-benchmark/">simple benchmark project</a>
         shows Act's throughput triples the one of Spring-boot-netty
       </li>
       <li>
-        Submitted a <a href="https://github.com/TechEmpower/FrameworkBenchmarks/pull/2525">PR</a>
-        on <a href="https://www.techempower.com/benchmarks">TechEmpower Benchmark</a> for ActFramework
+        <a href="https://www.techempower.com/benchmarks">TechEmpower Benchmark</a> has accepted the
+        <a href="https://github.com/TechEmpower/FrameworkBenchmarks/pull/2525">PR</a>
+        submitted by ActFramework
+      </li>
+      <li>
+        A third party <a href="https://github.com/networknt/microservices-framework-benchmark">Simple benchmark project</a>
+        shows ActFramework's throughput is 20 times of SpringBoot in simple case
       </li>
     </ul>
     <h6 class="docs-header">Features</h6>
@@ -101,10 +109,8 @@
           <p>
             While providing great developer experience, performance is still a very important aspect
             of ActFramework. According
-            <a href="https://github.com/networknt/light-java-example/tree/master/performance">this</a>
-            benchmark project, for a bare HelloWorld app, ActFramework has 2x throughput when
-            comparing with Bootique + Jetty/Jersey, about 3x throughput with Spring Boot Undertow,
-            Dropwizard and Spring Boot Tomcat.
+            <a href="https://www.techempower.com/benchmarks/">this</a>
+            benchmark project, ActFramework is 20 times faster than Spring boot in simple hello world case.
           </p>
         </div>
       </li>
@@ -487,7 +493,7 @@ public static class Transaction extends MorphiaModel<Transaction> {
 
 <script>
     function switchLocale(locale) {
-        $.post('/~i18n/locale', {act_locale: locale}, function() {
+        $.post('/~/i18n/locale', {act_locale: locale}, function() {
             window.location.reload();
         })
         return false;

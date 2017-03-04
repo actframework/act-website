@@ -61,12 +61,19 @@
     <h6 class="docs-header">最新消息</h6>
     <ul>
       <li>
+        一个ActFramework实现的<a href="http://www.todobackend.com/">TodoBackend</a>项目: http://github.com/greenlaw110/todomvc-act
+      </li>
+      <li>
         发布了一个<a href="https://github.com/greenlaw110/simple-webframework-benchmark/">简单的性能测试集</a>。Act
         的性能是Spring-boot-netty的三倍以上
       </li>
       <li>
-        向著名的<a href="https://www.techempower.com/benchmarks">TechEmpower Benchmark</a>提交了ActFramework的
-        <a href="https://github.com/TechEmpower/FrameworkBenchmarks/pull/2525">PR</a>
+        著名的<a href="https://www.techempower.com/benchmarks">TechEmpower Benchmark</a>接受了
+        ActFramework提交的<a href="https://github.com/TechEmpower/FrameworkBenchmarks/pull/2525">PR</a>
+      </li>
+      <li>
+        一个第三方发布的<a href="https://github.com/networknt/microservices-framework-benchmark">简单的benchmark</a>
+        显示ActFramework在处理简单请求是的强劲性能: 吞吐量可以达到SpringBoot的20倍以上
       </li>
     </ul>
     <h6 class="docs-header">ActFramework 特性</h6>
@@ -100,9 +107,8 @@
           </p>
           <p>
             虽然开发体验为ActFramework的最高优先级，我们同时也非常重视系统性能。根据
-            <a href="https://github.com/networknt/light-java-example/tree/master/performance">这个</a>
-            benchmark项目，对于一个最简单的HelloWorld应用, ActFramework拥有双倍于Bootique + Jetty/Jersey的吞吐量,
-            而更是Spring Boot Undertow的三倍，Dropwizard和Spring Boot Tomcat三倍以上的吞吐量。
+            <a href="https://www.techempower.com/benchmarks/">这个</a>
+            benchmark项目，对于一个简单的HelloWorld应用, ActFramework的性能是SpringBoot的20倍以上。
           </p>
         </div>
       </li>
@@ -479,7 +485,7 @@ public static class Transaction extends MorphiaModel<Transaction> {
 </div>
 <script>
     function switchLocale(locale) {
-        $.post('/~i18n/locale', {act_locale: locale}, function() {
+        $.post('/~/i18n/locale', {act_locale: locale}, function() {
             window.location.reload();
         })
         return false;

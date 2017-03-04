@@ -19,12 +19,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <act.version>0.5.0-SNAPSHOT</act.version>
-    <act-morphia.version>0.5.1-SNAPSHOT</act-morphia.version>
-    <act-aaa.version>0.5.0-SNAPSHOT</act-aaa.version>
-    <act-ebean.version>0.5.0-SNAPSHOT</act-ebean.version>
-    <act-social-link.version>0.5.0-SNAPSHOT</act-social-link.version>
-    <h2.version>1.4.193</h2.version>
+    <act.version>0.6.0-SNAPSHOT</act.version>
+    <act-morphia.version>0.6.0-SNAPSHOT</act-morphia.version>
+    <act-aaa.version>0.6.0-SNAPSHOT</act-aaa.version>
+    <act-social-link.version>0.6.0-SNAPSHOT</act-social-link.version>
     <app.entry>act_site.WebSite</app.entry>
   </properties>
 

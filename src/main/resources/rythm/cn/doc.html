@@ -135,7 +135,7 @@
       });
 
       function switchLocale(locale) {
-          $.post('/~i18n/locale', {act_locale: locale}, function() {
+          $.post('/~/i18n/locale', {act_locale: locale}, function() {
               window.location.reload();
           })
           return false;
