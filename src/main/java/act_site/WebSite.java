@@ -1,19 +1,14 @@
 package act_site;
 
 import act.Act;
-import act.Version;
 import act.app.conf.AppConfigurator;
-import act.boot.app.RunApp;
 import act.db.morphia.MorphiaDao;
 import act.util.ActContext;
 import act.view.TemplatePathResolver;
 import org.osgl.mvc.annotation.GetAction;
-import org.osgl.mvc.result.Result;
 
-import java.io.File;
 import java.util.Locale;
 
-import static act.controller.Controller.Util.download;
 import static act.controller.Controller.Util.render;
 
 public class WebSite {
@@ -43,7 +38,7 @@ public class WebSite {
     }
 
     public static void main(String[] args) throws Exception {
-        Act.start("Act", Version.appVersion(), WebSite.class);
+        Act.start("ACT WEB SITE");
     }
 
 }
