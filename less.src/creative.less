@@ -119,26 +119,29 @@ aside {
         }
     }
     @media (min-width: 768px) {
-        background-color: transparent;
+        background-color: rgba(255,255,255,0.0);
         border-color: fade(white, 30%);
-        .navbar-header .navbar-brand {
+        .navbar-header {
             color: fade(white, 70%);
             &:hover,
             &:focus {
                 color: white;
             }
         }
+        .navbar-brand{
+            opacity: 0.0;
+        }
         .nav > li > a,
         .nav > li > a:focus {
-            color: fade(white, 70%);
+            color: fade(black, 70%);
             &:hover {
-                color: white;
+                color: black;
             }
         }
         &.affix {
-            background-color: white;
+            background-color: rgba(255,255,255,0.85);
             border-color: fade(@gray-darker, 5%);
-            .navbar-header .navbar-brand {
+            .navbar-header {
                 color: @theme-primary;
                 font-size: 14px;
                 &:hover,
@@ -146,6 +149,11 @@ aside {
                     color: darken(@theme-primary, 10%);
                 }
             }
+
+            .navbar-brand{
+                opacity: 1.0;
+            }
+
             .nav > li > a,
             .nav > li > a:focus {
                 color: @gray-darker;
@@ -164,10 +172,12 @@ header {
     width: 100%;
     min-height: auto;
     .background-cover;
-    background-position: center;
-    background-image: url('../img/header.jpg');
+    background-position: right;
+    background-image: url('../image/bg4.jpg');
+    background-attachment: fixed;
+    background-size: cover;
     text-align: center;
-    color: white;
+    color: black;
     .header-content {
         position: relative;
         text-align: center;
@@ -186,7 +196,7 @@ header {
             }
             p {
                 font-weight: 300;
-                color: fade(white, 70%);
+                color: fade(black, 70%);
                 font-size: 16px;
                 margin-bottom: 50px;
             }

@@ -36,7 +36,6 @@ var path = {
 gulp.task('css', function() {
     return gulp.src([
             'css.src/*.css',
-            'rsrc/startbootstrap-creative-gh-pages/css/creative.css',
             'node_modules/magnific-popup/dist/magnific-popup.css'
         ])
         .pipe(rename({suffix: '.min'}))
@@ -65,7 +64,7 @@ gulp.task('css-min', function() {
  * Note that, in this case, we have a rsrc directory with a third party bootstrap template.
  * */
 gulp.task('less', function() {
-    return gulp.src('rsrc/startbootstrap-creative-gh-pages/less/*.less')
+    return gulp.src('less.src/*.less')
         .pipe(less())
         .pipe(rename({suffix: '.min'}))
         .pipe(cssnano())
@@ -99,8 +98,7 @@ gulp.task('js-min', function() {
  * */
 gulp.task('js', function() {
     return gulp.src([
-            'js.src/*.js',
-            'rsrc/startbootstrap-creative-gh-pages/js/creative.js'
+            'js.src/*.js'
         ])
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
@@ -135,6 +133,9 @@ gulp.task('watch', function() {
 
     // Watch .js files
     gulp.watch('js.src/*.js', ['js']);
+
+    // Watch .js files
+    gulp.watch('less.src/*.less', ['less']);
 
     // Create LiveReload server
     livereload.listen();

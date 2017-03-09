@@ -13,6 +13,7 @@ import static act.controller.Controller.Util.render;
 
 public class WebSite {
 
+    /*
     public static class MyConfiguration extends AppConfigurator {
         @Override
         public void configure() {
@@ -29,12 +30,21 @@ public class WebSite {
             });
         }
     }
+    */
 
+    /*
     @GetAction
     public void home(MorphiaDao<Skeleton> skeletonDao, Video.Dao videoDao) {
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
         Iterable<Video> videos = videoDao.findAll();
         render(skeletons, videos);
+    }
+    */
+
+    @GetAction
+    public void master()
+    {
+        render();
     }
 
     public static void main(String[] args) throws Exception {
