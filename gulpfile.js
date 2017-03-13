@@ -36,7 +36,7 @@ var path = {
 gulp.task('css', function() {
     return gulp.src([
             'css.src/*.css',
-            'node_modules/magnific-popup/dist/magnific-popup.css'
+            'node_modules/jquery-modal/jquery.modal.css'
         ])
         .pipe(rename({suffix: '.min'}))
         .pipe(cssnano())
@@ -81,7 +81,6 @@ gulp.task('js-min', function() {
     return gulp.src([
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/markdown-it/dist/markdown-it.min.js',
-            'node_modules/magnific-popup/dist/jquery.magnific-popup.min.js',
             'node_modules/scrollreveal/dist/scrollreveal.min.js',
             'node_modules/bootstrap/dist/js/bootstrap.min.js'
         ])
@@ -98,7 +97,8 @@ gulp.task('js-min', function() {
  * */
 gulp.task('js', function() {
     return gulp.src([
-            'js.src/*.js'
+            'js.src/*.js',
+            'node_modules/jquery-modal/jquery.modal.js'
         ])
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())

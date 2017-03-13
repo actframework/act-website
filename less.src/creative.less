@@ -50,6 +50,14 @@ p {
     background-color: @theme-primary;
 }
 
+.bg-secondary {
+    background-color: @theme-light;
+}
+
+.bg-tertiary {
+    background-color: @theme-dark;
+}
+
 .bg-dark {
     background-color: @gray-darker;
     color: white;
@@ -60,7 +68,7 @@ p {
 }
 
 section {
-    padding: 100px 0;
+    padding: 50px 0px 50px 0px;
 }
 
 aside {
@@ -70,6 +78,28 @@ aside {
 .no-padding {
     padding: 0;
 }
+
+//modal
+
+.modal {
+    overflow: visible !important;
+}
+
+.OverwriteDialogOverflow { overflow: visible; }
+
+#dialogContainer { position: relative; }
+
+#hiddencloseButton {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+#hiddenArrowButtons {
+    position: absolute;
+    bottom: -30px;
+}
+
 
 // Navigation
 
@@ -243,6 +273,40 @@ header {
     }
     p {
         margin-bottom: 0;
+    }
+}
+
+.news-box {
+    ul{
+        li{
+            list-style: none;
+            .news-date{
+                display: inline-block;
+                width:10%;
+                margin: 0px 0px 20px 0px;
+                padding: 0px;
+                vertical-align: text-top;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .news-text{
+                display: inline-block;
+                margin: 0px 0px 20px 0px;
+                padding: 0px 0px 10px 10px;
+                width: 89%;
+                vertical-align: text-top;
+                font-size: 16px;
+                line-height: 1.5;
+                a{
+                    color: white;
+                    opacity: 0.9;
+                    &:hover{
+                        color: white;
+                        opacity: 1.0;
+                    }
+                }
+            }
+        }
     }
 }
 

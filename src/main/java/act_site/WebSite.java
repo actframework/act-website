@@ -42,9 +42,14 @@ public class WebSite {
     */
 
     @GetAction
-    public void master()
+    public void master(ActContext context)
     {
-        render();
+        String lang = "en"; //default language
+        Locale locale = context.locale(true);
+        if ("zh".equals(locale.getLanguage())) {
+            lang = "cn" ; //supported language
+        }
+        render(lang);
     }
 
     public static void main(String[] args) throws Exception {

@@ -1,0 +1,279 @@
+<ul>
+    <li>
+        <h6 class="feature"><a href="#full-stack" rel="modal:open">
+            A full stack MVC framework
+            <i class="fa fa-angle-right indicator"></i>
+        </a></h6>
+        </div>
+        <div id="full-stack" class="modal" style="display:none;">
+            An ActFramework application has the main method and start in seconds.
+
+            <div class="modal alert alert-info">
+                <i class="fa fa-info-circle indicator"></i> Act is not a servlet framework and Act application does not
+                run in a Servlet container
+            </div>
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#dev-exp" rel="modal:open">
+            Unbeatable development experience w/ great performance
+            <i class="fa fa-angle-right indicator"></i>
+        </a></h6>
+        <div id="dev-exp" class="modal" style="display:none;">
+            <p>
+                Act support hot-reload application and it takes less than a second to reload
+                your normal sized app (in our 10K LOC app, takes around 500ms to reload app). Hot reload happens
+                when your Java source code, template code or configuration files has been changed
+            </p>
+            <p>
+                While providing great developer experience, performance is still a very important aspect
+                of ActFramework. According
+                <a href="https://www.techempower.com/benchmarks/">this</a>
+                benchmark project, ActFramework is 20 times faster than Spring boot in simple hello world case.
+            </p>
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#di" rel="modal:open">
+            Dependency injection
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="di" class="modal" style="display:none;">
+            Fully JSR 330 support and even more:
+            <ul>
+                <li>Inject parameter for methods including action handler, mail sender, job method etc</li>
+                <li>Inject collections</li>
+                <li>Customizable injection tag, e.g. <code>@@LoginUser</code></li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#spa" rel="modal:open">
+            SPA/Mobile app support
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="spa" class="modal" style="display:none;">
+            Supports the trends of separate front end architecture via:
+            <ul>
+                <li>
+                    RESTful support
+                </li>
+                <li>
+                    Built-in CORS support
+                </li>
+                <li>
+                    Session/Header mapping
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#security" rel="modal:open">
+            Uncompromised security
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="security" class="modal" style="display:none;">
+            ActFramework is a security aware framework, it built uncompromised security support into your application
+            <ul>
+                <li>Session cookie is secure and http only, payload is signed and encrypted (optionally)</li>
+                <li>Enable CSRF prevention with just one configuration item</li>
+                <li>XSS prevention: Rythm engine escape variable output by default</li>
+                <li>Implementing your authentication/authorisation/accounting framework using
+                    <a href="https://github.com/actframework/act-aaa-plugin">AAA plugin</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#anno" rel="modal:open">
+            Annotation aware but not annotation stack
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="anno" class="modal" style="display:none;">
+            <p>Annotation is one of the tool ActFramework used to increase expressiveness. However we do not appreciate
+                <a href="http://annotatiomania.com/">crazy annotation stacked code</a>. Instead we make the code to express
+                the intention in a natural way and save the use of annotation whenever possible.</p>
+            <div>For example, for the following SpringMVC code:</div>
+            <pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
+public List<Invoice> listUsersInvoices(
+   @@PathVariable("userId") int user,
+   @@RequestParam(value = "date", required = false) Date dateOrNull) {
+  ...
+}
+</code></pre>
+            The corresponding ActFramework app code is:
+            <pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
+public List<Invoice> listUsersInvoices(int user, Date date) {
+  ...
+}
+</code></pre>
+            No doubt ActFramework code is simpler and clearer when comparing with SpringMVC code.
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#conf" rel="modal:open">
+            Multi-environment configuration
+            <i class="fa fa-angle-right"></i></a></h6>
+        <div id="conf" class="modal" style="display:none;max-height:90%;">
+            ActFramework supports the concept of <code>profile</code> which allows you to organize your configurations
+            in different environment (defined by profile) easily. Take a look at the following configurations
+            from one of our real project:
+            <pre><code>resources
+├── conf
+│   ├── common
+│   │   ├── app.properties
+│   │   ├── db.properties
+│   │   ├── mail.properties
+│   │   ├── payment.properties
+│   │   └── social.properties
+│   ├── local-no-ui
+│   │   ├── app.properties
+│   │   ├── db.properties
+│   │   └── port.properties
+│   ├── local-sit
+│   │   └── app.properties
+│   ├── local-ui
+│   │   ├── app.properties
+│   │   └── db.properties
+│   ├── sit
+│   │   ├── app.properties
+│   │   └── db.properties
+│   └── uat
+...</code></pre>
+            Suppose on your UAT server, you start the application with JVM option <code>-Dprofile=uat</code>,
+            ActFramework will load the configuration in the following sequence:
+            <ol>
+                <li>Read all <code>.properties</code> files in the <code>/resources/conf/common</code> dir</li>
+                <li>Read all <code>.properties</code> files in the <code>/resources/conf/uat</code> dir</li>
+            </ol>
+            This way ActFramework use the configuration items defined in <code>uat</code> profile to overwrite the same
+            items defined in <code>common</code> profile. The common items that are not overwritten still effective.
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#db" rel="modal:open">
+            Simple yet powerful database support
+            <i class="fa fa-angle-right"></i></a></h6>
+        <div id="db" class="modal" style="display:none;">
+            ActFramework provides a descent set of database access API via <code>act.db.Dao</code> and relevant
+            interfaces.
+            <ul>
+                <li>
+                    <a href="https://github.com/actframework/act-ebean">act-ebean</a> plugin implemented the ActFramework
+                    database layer based on the fast and simple <a href="http://ebean-orm.github.io/">ebean ORM</a> library,
+                    which works with most SQL database solutions on the market
+                </li>
+                <li>
+                    <a href="https://github.com/actframework/act-morphia">act-morphia</a> plugin implemented the ActFramework
+                    database layer based on the official <a href="https://mongodb.github.io/morphia/">Morphia</a> document
+                    mapper for MongoDB
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#multi-db" rel="modal:open">
+            Multiple database support
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="multi-db" class="modal" style="display:none;">
+            It is not unusual for today's application to play with multiple and even heterogeneous database storage. And
+            Act has already built-in the support for that. For example:
+            <pre class="line-numbers"><code class="language-properties"># the database configuration
+db.instances=mongo,sql
+
+# db1 configurations
+db.mongo.impl=act.db.morphia.MorphiaPlugin
+db.mongo.uri=mongodb://localhost/myapp
+
+db.sql.impl=act.db.ebean.EbeanPlugin
+db.url=jdbc:h2:./myapp
+db.ddl.createOnly=true
+</code></pre>
+            <pre class="line-numbers"><code class="language-java">// -- the model that require transaction go SQL
+@@DB("sql")
+@@Entity(name = "va")
+public class VirtualAccount{
+    @@Id
+    private Long id;
+
+    @@Index(unique = true)
+    public String ownerId;
+
+    // balance in cents
+    public int balance;
+}
+</code></pre>
+            <pre class="line-numbers"><code class="language-java">// -- the model does not require transaction go MongoDB
+@@DB("mongo")
+@@Entity("trans")
+public static class Transaction extends MorphiaModel<Transaction> {
+
+    /**
+     * Stores from account owner ID
+     */
+    public String creditAcc;
+    /**
+     * Stores to account owner ID
+     */
+    public String debitAcc;
+    /**
+     * Stores the transaction amount
+     */
+    public int amount;
+    ...
+}
+</code></pre>
+            The above code shows how to configure two databases with one for SQL database and the other one for MongoDB.
+            Once you have two database configured, it is super easy to map your model class to database via the
+            <code>@@DB</code> annotation
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#view" rel="modal:open">
+            Powerful view architecture with multiple render engine support
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="view" class="modal" style="display:none;">
+            For more traditional application that require server side page rendering,
+            ActFramework by default use the <a href="http://rythmengine.org/">Rythm Template Engine</a>. And it
+            supports using your favorite template engine including:
+            <ul>
+                <li>
+                    <a href="http://velocity.apache.org/">Velocity</a> through
+                    <a href="https://github.com/actframework/act-velocity">Velocity plugin</a>
+                </li>
+                <li>
+                    <a href="http://freemarker.org/">FreeMarker</a> through
+                    <a href="https://github.com/actframework/act-freemarker">FreeMarker plugin</a>
+                </li>
+                <li>
+                    <a href="http://www.thymeleaf.org/">Thymeleaf</a> through
+                    <a href="https://github.com/actframework/act-thymeleaf">Thymeleaf plugin</a>
+                </li>
+                <li>
+                    <a href="https://mustache.github.io/">Mustache</a> through
+                    <a href="https://github.com/actframework/act-mustache">Mustache plugin</a>
+                </li>
+                <li>
+                    <a href="http://ibeetl.com/">Beetl</a> through
+                    <a href="https://github.com/actframework/act-beetl">Beetl plugin</a>
+                </li>
+            </ul>
+            ActFramework support using multiple template engines in the same projects
+        </div>
+    </li>
+    <li>
+        <h6 class="feature"><a href="#misc" rel="modal:open">
+            Misc features
+            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <div id="misc" class="modal" style="display:none;">
+            ActFramework provides rich feature set that covers most of your web application development needs:
+            <ul>
+                <li>
+                    <a href="/doc/email">Sending email</a>
+                </li>
+                <li>
+                    <a href="/doc/job">Schedule Jobs</a>
+                </li>
+                <li>
+                    <a href="/doc/event">Event handling and dispatching</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>

@@ -1,6 +1,6 @@
 {
   "name": "act-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "author": "Joe Cincotta <joe@thinking.group>",
   "contributors": [
@@ -21,7 +21,7 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.6.3",
     "jquery": "^1.11.3",
-    "magnific-popup": "^1.1.0",
+    "jquery-modal": "*",
     "markdown-it": "^8.2.2",
     "prismjs": "^1.6.0",
     "scrollreveal": "^3.1.4"
@@ -32,7 +32,6 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cache": "^0.4.5",
-    "gulp-clean-css": "^2.0.10",
     "gulp-clip-empty-files": "^0.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
