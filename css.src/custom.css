@@ -1,3 +1,5 @@
+/*TO BE DELETED*/
+
 .ui-dialog {
     overflow: visible;
 }
@@ -58,10 +60,7 @@ iframe.tutorial {
     border-color: #0FA0CE;
     background-color: #b8e5fd;
 }
-h6.feature {
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
+
 .feature-desc {
 }
 
@@ -244,3 +243,4 @@ display: none
 a > i.fa {
     color: #e4112b;
 }
+

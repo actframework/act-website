@@ -1,24 +1,15 @@
-<ul>
-    <li>
-        <h6 class="feature"><a href="#full-stack" rel="modal:open">
-            A full stack MVC framework
-            <i class="fa fa-angle-right indicator"></i>
-        </a></h6>
-        </div>
+<ul class="feature">
+    <li><a href="#full-stack" rel="modal:open">A full stack MVC framework</a>
         <div id="full-stack" class="modal" style="display:none;">
-            An ActFramework application has the main method and start in seconds.
-
-            <div class="modal alert alert-info">
-                <i class="fa fa-info-circle indicator"></i> Act is not a servlet framework and Act application does not
-                run in a Servlet container
-            </div>
+            <p>
+                An ActFramework application has the main method and start in seconds.
+            </p>
+            <p>
+                Act is not a servlet framework and Act application does not run in a Servlet container
+            </p>
         </div>
     </li>
-    <li>
-        <h6 class="feature"><a href="#dev-exp" rel="modal:open">
-            Unbeatable development experience w/ great performance
-            <i class="fa fa-angle-right indicator"></i>
-        </a></h6>
+    <li><a href="#dev-exp" rel="modal:open">Unbeatable development experience w/ great performance</a>
         <div id="dev-exp" class="modal" style="display:none;">
             <p>
                 Act support hot-reload application and it takes less than a second to reload
@@ -34,11 +25,11 @@
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#di" rel="modal:open">
-            Dependency injection
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <a href="#di" rel="modal:open">Dependency injection</a>
         <div id="di" class="modal" style="display:none;">
-            Fully JSR 330 support and even more:
+            <p>
+                Fully JSR 330 support and even more:
+            </p>
             <ul>
                 <li>Inject parameter for methods including action handler, mail sender, job method etc</li>
                 <li>Inject collections</li>
@@ -47,11 +38,11 @@
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#spa" rel="modal:open">
-            SPA/Mobile app support
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <a href="#spa" rel="modal:open">SPA/Mobile app support</a>
         <div id="spa" class="modal" style="display:none;">
-            Supports the trends of separate front end architecture via:
+            <p>
+                Supports the trends of separate front end architecture via:
+            </p>
             <ul>
                 <li>
                     RESTful support
@@ -66,11 +57,11 @@
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#security" rel="modal:open">
-            Uncompromised security
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <a href="#security" rel="modal:open">Uncompromised security</a>
         <div id="security" class="modal" style="display:none;">
-            ActFramework is a security aware framework, it built uncompromised security support into your application
+            <p>
+                ActFramework is a security aware framework, it built uncompromised security support into your application
+            </p>
             <ul>
                 <li>Session cookie is secure and http only, payload is signed and encrypted (optionally)</li>
                 <li>Enable CSRF prevention with just one configuration item</li>
@@ -82,16 +73,12 @@
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#anno" rel="modal:open">
-            Annotation aware but not annotation stack
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <a href="#anno" rel="modal:open">Annotation aware but not annotation stack</a>
         <div id="anno" class="modal" style="display:none;">
-            <p>Annotation is one of the tool ActFramework used to increase expressiveness. However we do not appreciate
-                <a href="http://annotatiomania.com/">crazy annotation stacked code</a>. Instead we make the code to express
-                the intention in a natural way and save the use of annotation whenever possible.</p>
-            <div>For example, for the following SpringMVC code:</div>
+            <p>Annotation is one of the tool ActFramework used to increase expressiveness. However we do not appreciate <a href="http://annotatiomania.com/">crazy annotation stacked code</a>. Instead we make the code express intention in a natural way, and save the use of annotations whenever possible.</p>
+            <p>For example, for the following SpringMVC code:</p>
             <pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
-public List<Invoice> listUsersInvoices(
+public List&lt;Invoice&gt; listUsersInvoices(
    @@PathVariable("userId") int user,
    @@RequestParam(value = "date", required = false) Date dateOrNull) {
   ...
@@ -99,17 +86,15 @@ public List<Invoice> listUsersInvoices(
 </code></pre>
             The corresponding ActFramework app code is:
             <pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
-public List<Invoice> listUsersInvoices(int user, Date date) {
+public List&lt;Invoice&gt; listUsersInvoices(int user, Date date) {
   ...
 }
 </code></pre>
-            No doubt ActFramework code is simpler and clearer when comparing with SpringMVC code.
+            No doubt Act.Framework code is simpler and clearer when compared with SpringMVC code.
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#conf" rel="modal:open">
-            Multi-environment configuration
-            <i class="fa fa-angle-right"></i></a></h6>
+        <a href="#conf" rel="modal:open">Multi-environment configuration</a>
         <div id="conf" class="modal" style="display:none;max-height:90%;">
             ActFramework supports the concept of <code>profile</code> which allows you to organize your configurations
             in different environment (defined by profile) easily. Take a look at the following configurations
@@ -147,12 +132,12 @@ public List<Invoice> listUsersInvoices(int user, Date date) {
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#db" rel="modal:open">
-            Simple yet powerful database support
-            <i class="fa fa-angle-right"></i></a></h6>
+        <a href="#db" rel="modal:open">Simple yet powerful database support</a>
         <div id="db" class="modal" style="display:none;">
-            ActFramework provides a descent set of database access API via <code>act.db.Dao</code> and relevant
-            interfaces.
+            <p>
+                ActFramework provides a descent set of database access API via <code>act.db.Dao</code> and relevant
+                interfaces.
+            </p>
             <ul>
                 <li>
                     <a href="https://github.com/actframework/act-ebean">act-ebean</a> plugin implemented the ActFramework
@@ -168,9 +153,7 @@ public List<Invoice> listUsersInvoices(int user, Date date) {
         </div>
     </li>
     <li>
-        <h6 class="feature"><a href="#multi-db" rel="modal:open">
-            Multiple database support
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+        <a href="#multi-db" rel="modal:open">Multiple database support</a>
         <div id="multi-db" class="modal" style="display:none;">
             It is not unusual for today's application to play with multiple and even heterogeneous database storage. And
             Act has already built-in the support for that. For example:
@@ -224,14 +207,13 @@ public static class Transaction extends MorphiaModel<Transaction> {
             <code>@@DB</code> annotation
         </div>
     </li>
-    <li>
-        <h6 class="feature"><a href="#view" rel="modal:open">
-            Powerful view architecture with multiple render engine support
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+    <li><a href="#view" rel="modal:open">Powerful view architecture with multiple render engine support</a>
         <div id="view" class="modal" style="display:none;">
-            For more traditional application that require server side page rendering,
-            ActFramework by default use the <a href="http://rythmengine.org/">Rythm Template Engine</a>. And it
-            supports using your favorite template engine including:
+            <p>
+                For more traditional application that require server side page rendering,
+                ActFramework by default use the <a href="http://rythmengine.org/">Rythm Template Engine</a>. And it
+                supports using your favorite template engine including:
+            </p>
             <ul>
                 <li>
                     <a href="http://velocity.apache.org/">Velocity</a> through
@@ -254,15 +236,16 @@ public static class Transaction extends MorphiaModel<Transaction> {
                     <a href="https://github.com/actframework/act-beetl">Beetl plugin</a>
                 </li>
             </ul>
-            ActFramework support using multiple template engines in the same projects
+            <p>
+                ActFramework support using multiple template engines in the same projects
+            </p>
         </div>
     </li>
-    <li>
-        <h6 class="feature"><a href="#misc" rel="modal:open">
-            Misc features
-            <i class="fa fa-angle-right indicator"></i></a></h6>
+    <li><a href="#misc" rel="modal:open">Misc features</a>
         <div id="misc" class="modal" style="display:none;">
-            ActFramework provides rich feature set that covers most of your web application development needs:
+            <p>
+                ActFramework provides rich feature set that covers most of your web application development needs:
+            </p>
             <ul>
                 <li>
                     <a href="/doc/email">Sending email</a>
