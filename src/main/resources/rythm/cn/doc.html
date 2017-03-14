@@ -4,15 +4,31 @@
 <script src="/js/site.js"></script>
 <script src="/js/markdown-it.js"></script>
 <script src="/js/markdown-it-footnote.js"></script>
-<script src="/js/prism.js" charset="utf-8"></script>
+<script src="/js/highlight.pack.js"></script>
+<script src="/js/highlightjs-line-numbers.min.js"></script>
 }
 
 @section("moreCss") {
-<link rel="stylesheet" href="/css/prism.css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css">
+<link rel="stylesheet" href="/css/hilight.css">
 <style>
   h4 {
     font-family: "Envy Code R", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  pre > code {
+    background-color: #222;
+    color: #eee;
+    padding: 15px;
+  }
+  .hljs-line-numbers {
+    text-align: right;
+    border-right: 1px solid #ccc;
+    color: #999;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 </style>
 }
@@ -44,43 +60,20 @@
 
 <script>
   $.get("@docPath", function(result) {
-      var languageOverrides = {
-          js: 'javascript'
-      };
-
-      if (typeof emojify != 'undefined') {
-          emojify.setConfig({img_dir: 'emoji'});
-      }
 
       var md = markdownit({
           html: true,
           highlight: function (code, lang) {
-              if (languageOverrides[lang]) lang = languageOverrides[lang];
-              if (!lang) {
-                  lang = 'java';
+              console.log({lang: lang});
+              if (lang && hljs.getLanguage(lang)) {
+                  try {
+                      return hljs.highlight(lang, code).value;
+                  } catch (__) {}
+              } else {
+                  console.log("lang not supported: " + lang)
               }
-              if (lang === 'html' || lang == "xml") {
-                  var grammar = Prism.languages[lang];
-                  var formatted = Prism.highlight(code, grammar, lang);
-                  var match = code.match(/\n(?!$)/g);
-                  var linesNum = match ? match.length + 1 : 1;
-                  var lineNumbersWrapper;
 
-                  var lines = new Array(linesNum + 1);
-                  lines = lines.join('<span></span>');
-
-                  lineNumbersWrapper = document.createElement('span');
-                  lineNumbersWrapper.className = 'line-numbers-rows';
-                  lineNumbersWrapper.innerHTML = lines;
-                  return formatted + lineNumbersWrapper.outerHTML;
-              }
-              var codeElement = document.createElement("code");
-              codeElement.innerHTML = code;
-              codeElement.className = 'language-' + lang + ' line-numbers';
-              var preElement = document.createElement("pre");
-              preElement.appendChild(codeElement);
-              Prism.highlightElement(codeElement);
-              return codeElement.innerHTML;
+              return ''; // use external default escaping
           }
       }).use(markdownitFootnote);
 
@@ -93,9 +86,6 @@
           if (!out) return
           var old = out.cloneNode(true);
           out.innerHTML = "<br/>" + md.render(val);
-          if (typeof emojify != 'undefined') {
-              emojify.run(out);
-          }
 
           var allold = old.getElementsByTagName("*");
           if (allold === undefined) return;
@@ -109,6 +99,12 @@
                   return;
               }
           }
+
+          setTimeout(function() {
+              $('pre.line-numbers > code').each(function(i, block) {
+                  hljs.lineNumbersBlock(block);
+              });
+          })
 
           if (window.location.hash) {
               setTimeout(function() {
