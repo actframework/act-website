@@ -194,22 +194,25 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </section>
 
-    <section class="bg-primary" id="getstarted">
+    <section class="bg-primary started-bg" id="getstarted">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
+                    <h2 class="section-heading">
+                        <svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"> <g transform="translate(0, 0)"> <line data-cap="butt" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="1" y1="12" x2="22" y2="12" stroke-linejoin="round" stroke-linecap="round"></line> <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="1" y1="5" x2="9" y2="5" stroke-linejoin="round" stroke-linecap="round"></line> <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="1" y1="19" x2="16" y2="19" stroke-linejoin="round" stroke-linecap="round"></line> <polyline fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="19,9 22,12 19,15 " stroke-linejoin="round"></polyline> <polyline data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points=" 6,2 9,5 6,8 " stroke-linejoin="round"></polyline> <polyline data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points=" 13,16 16,19 13,22 " stroke-linejoin="round"></polyline> </g> </svg>
+                        Get Started. Fast.</h2>
                     <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
-                </div>
+                    <div class="text-left news-box">
+                        <p class="text-faded">Act.Framework sample projects are driven by <a href="https://maven.apache.org/what-is-maven.html" class="text-faded">Maven</a>. You can choose from the following sample project skeletons to start your own Act.Framework application.</p>
+                        <p class="text-faded">Once you've downloaded a sample skeleton, import it into your <a href="https://www.jetbrains.com/idea/" class="text-faded">IDE</a>, let Maven resolve dependencies, and just rename your package and entry class. Then you're good to <a href="http://giphy.com/gifs/hoppip-art-dance-1toWE6hxIS6UE" class="text-faded">rock and roll</a>!</p>
+                        @args Iterable<act_site.Skeleton> skeletons
+                        @invoke("getstarted",skeletons)
+                    </div>
             </div>
+
+
         </div>
     </section>
 
@@ -217,7 +220,7 @@
         <div class="container">
             <div class="container text-center">
                 <div class="call-to-action">
-                    <h2>Tutorials and Videos to Get Started</h2>
+                    <h2>Tutorials and Videos</h2>
                 </div>
             </div>
             <div class="row">
@@ -240,32 +243,51 @@
     <aside class="bg-dark" id="support">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>We have the foundations of enterprise support</h2>
+                <h2>We Have the Foundations of Enterprise Support</h2>
             </div>
         </div>
 
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <img src="image/icons/github.png" width="32" height="32" style="width:32px;height:32px;">
+                        <i class="text-primary sr-icons"><img src="/image/icon/github2.png" style="width:48px;height:48px;"></i>
                     </div>
-                    <p class="text-muted">Natively RESTful or render.<br>Use Rythm, Velocity, FreeMarker, Thymeleaf, Mustache or Beetl.</p>
+                    <p class="text-faded">Raise issues on <a href="https://github.com/actframework/actframework/issues">GitHub</a></p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="text-primary sr-icons"><img src="/image/icon/gitter.png" style="width:48px;height:48px;"></i>
+                    </div>
+                    <p class="text-faded">Watch the <a href="https://gitter.im/actframework/actframework">Gitter channel</a></p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="text-primary sr-icons"><img src="/image/icon/so.png" style="width:48px;height:48px;"></i>
+                    </div>
+                    <p class="text-faded">Use the <code>actframework</code> tag on <a href="http://stackoverflow.com/questions/tagged/actframework">StackOverflow</a></p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="text-primary sr-icons"><img src="/image/icon/studio-icon.png" style="width:48px;height:48px;"></i>
+                    </div>
+                    <p class="text-faded">Enterprise consulting and support from <a href="https://thinking.studio">Thinking.Studio</a></p>
                 </div>
 
             </div>
-<!--
-            <div class="col-lg-8 col-lg-offset-2 text-left">
-                Please get support from/contribute to Actframework community by
-                <br/><br/>
-                <ul><li>Raise issues on <a href="https://github.com/actframework/actframework/issues">GitHub</a></li>
-                    <li>Join the <a href="https://groups.google.com/forum/#!forum/actframework">Google Group</a></li>
-                    <li>Watch the <a href="https://gitter.im/actframework/actframework">Gitter channel</a></li>
-                    <li>Send your questions to <a href="http://stackoverflow.com/questions/tagged/actframework">StackOverflow</a> with the <code>actframework</code> tag</li>
-                </ul>
-                For user who speak and write Chinese, you can join our QQ Group: 283919975
+
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <br><br>
+                    <p class="text-muted">If you write Chinese, you can join our very active QQ Group: 283919975 <img src="/image/icon/qq.png" style="width:24px;height:24px;"></p>
+                    <!-- <p class="text-muted"><img src="/image/icon/groups.png" style="width:24px;height:24px;"> Join the <a href="https://groups.google.com/forum/#!forum/actframework">Google Group</a> as well</p> -->
+                </div>
             </div>
--->
+
         </div>
     </aside>
 

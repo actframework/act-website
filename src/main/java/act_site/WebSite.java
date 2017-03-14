@@ -42,14 +42,16 @@ public class WebSite {
     */
 
     @GetAction
-    public void master(ActContext context)
+    public void master(MorphiaDao<Skeleton> skeletonDao, Video.Dao videoDao, ActContext context)
     {
         String lang = "en"; //default language
         Locale locale = context.locale(true);
         if ("zh".equals(locale.getLanguage())) {
             lang = "cn" ; //supported language
         }
-        render(lang);
+        Iterable<Skeleton> skeletons = skeletonDao.findAll();
+        Iterable<Video> videos = videoDao.findAll();
+        render(skeletons, videos, lang);
     }
 
     public static void main(String[] args) throws Exception {
