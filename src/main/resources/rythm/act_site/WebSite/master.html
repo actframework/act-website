@@ -174,20 +174,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="container">
+            <div class="row" style="padding-top: 35px;">
+            </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h3>
+                    <h2>
                         More Act.Framework Features
-                    </h3>
+                    </h2>
                 </div>
             </div>
-        </div>
-
-
-        <div class="container">
+            <div class="row" style="padding-top: 25px;">
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 text-left">
                     @invoke("features")
@@ -207,12 +204,11 @@
                     <div class="text-left news-box">
                         <p class="text-faded">Act.Framework sample projects are driven by <a href="https://maven.apache.org/what-is-maven.html" class="text-faded">Maven</a>. You can choose from the following sample project skeletons to start your own Act.Framework application.</p>
                         <p class="text-faded">Once you've downloaded a sample skeleton, import it into your <a href="https://www.jetbrains.com/idea/" class="text-faded">IDE</a>, let Maven resolve dependencies, and just rename your package and entry class. Then you're good to <a href="http://giphy.com/gifs/hoppip-art-dance-1toWE6hxIS6UE" class="text-faded">rock and roll</a>!</p>
+                        <div class="row" style="padding-top: 25px;"></div>
                         @args Iterable<act_site.Skeleton> skeletons
                         @invoke("getstarted",skeletons)
                     </div>
             </div>
-
-
         </div>
     </section>
 
@@ -295,17 +291,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                    <h2 class="section-heading">Why Act.Framework?</h2>
+                    <hr class="light">
+                    <div class="text-left news-box">
+                        @invoke("about")
+                    </div>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>123-456-6789</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:your-email@@your-domain.com">feedback@@startbootstrap.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    &copy;2015-2017 Gelin Luo and Thinking.Group
                 </div>
             </div>
         </div>
