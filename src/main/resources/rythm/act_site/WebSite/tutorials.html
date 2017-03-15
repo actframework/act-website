@@ -1,4 +1,4 @@
-@def videoItem(Video video, String lang) {
+@def videoItem(Video video) {
     @{
         Video.Source source = video.source(lang)
     }
@@ -31,10 +31,9 @@
         </div>
     </div>
     <div class="row">
-        @//args String lang
-        @args Iterable<Video> videos
+        @args Iterable<Video> videos, String lang
         @for (videos) {
-            @videoItem(_,"en")
+            @videoItem(_)
         }
     </div>
 </div>

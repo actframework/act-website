@@ -56,13 +56,12 @@
     <section id="getstarted">
         @args Iterable<act_site.Skeleton> skeletons
         @args String lang
-        @invoke("getstarted",skeletons, {lang: lang})
+        @getstarted({skeletons: skeletons, lang: lang})
     </section>
 
     <section id="tutorials">
-        @args Iterable<act_site.Video> videos
-        @args String lang
-        @invoke("tutorials",videos, {lang: lang})
+        @args Iterable<act_site.Video> videos, String lang
+        @tutorials({videos: videos, lang: lang})
     </section>
 
     <aside class="bg-dark" id="support">
