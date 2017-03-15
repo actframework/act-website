@@ -9,9 +9,26 @@
     </div>
 </li>
 }
-<ul class="docs-section">
-    @args Iterable<act_site.Skeleton> skeletons
-    @for (skeletons) {
-    @download(_.name, _.desc, _.fileName)
-    }
-</ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading">
+                <svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"> <g transform="translate(0, 0)"> <line data-cap="butt" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="1" y1="12" x2="22" y2="12" stroke-linejoin="round" stroke-linecap="round"></line> <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="1" y1="5" x2="9" y2="5" stroke-linejoin="round" stroke-linecap="round"></line> <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="1" y1="19" x2="16" y2="19" stroke-linejoin="round" stroke-linecap="round"></line> <polyline fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="19,9 22,12 19,15 " stroke-linejoin="round"></polyline> <polyline data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points=" 6,2 9,5 6,8 " stroke-linejoin="round"></polyline> <polyline data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points=" 13,16 16,19 13,22 " stroke-linejoin="round"></polyline> </g> </svg>
+                Get Started. Fast.</h2>
+            <hr class="light">
+            <div class="text-left news-box">
+                <p>Act.Framework sample projects are driven by <a href="https://maven.apache.org/what-is-maven.html" class="text-faded">Maven</a>. You can choose from the following sample project skeletons to start your own Act.Framework application.</p>
+                <p>Once you've downloaded a sample skeleton, import it into your <a href="https://www.jetbrains.com/idea/" class="text-faded">IDE</a>, let Maven resolve dependencies, and just rename your package and entry class.</p>
+                <p>Then you're good to <a href="http://giphy.com/gifs/hoppip-art-dance-1toWE6hxIS6UE" class="text-faded">rock and roll</a>!</p>
+                <div class="row" style="padding-top: 30px;"></div>
+                <ul class="docs-section">
+                    @args Iterable<act_site.Skeleton> skeletons
+                    @for (skeletons) {
+                    @download(_.name, _.desc, _.fileName)
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

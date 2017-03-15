@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top"><img src="/image/act-logo-type.png" style="width: 250px;"></a>
+    </div>
+
+    @//Navigation Link Fragment
+    @def navLink(String url, String label){
+        <li>
+            <a class="page-scroll" href="@url">@i18n(label)</a>
+        </li>
+    }
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            @navLink("#introduction","nav.introduction")
+            @navLink("#news","nav.news")
+            @navLink("#getstarted","nav.getstarted")
+            @navLink("#tutorials","nav.tutorials")
+            @navLink("/doc","nav.documentation")
+            @navLink("#support","nav.support")
+            @navLink("#about","nav.about")
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
