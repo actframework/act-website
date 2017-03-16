@@ -97,8 +97,8 @@ gulp.task('js-min', function() {
 gulp.task('js', function() {
     return gulp.src([
             'js.src/*.js',
-            'node_modules/jquery-modal/jquery.modal.js',
-            'node_modules/jquery-easing/jquery.easing.1.3.js'
+            'node_modules/jquery-easing/jquery.easing.1.3.js',
+            'node_modules/bootstrap/js/collapse.js'
         ])
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())

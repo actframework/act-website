@@ -1,37 +1,10 @@
-<ul class="feature">
-    <li><a href="#full-stack" rel="modal:open">@i18n("feature.fullstack.title")</a>
-        <div id="full-stack" class="modal" style="display:none;">
-            @i18n("feature.fullstack.desc")
-        </div>
-    </li>
-    <li><a href="#dev-exp" rel="modal:open">@i18n("feature.devexp.title")</a>
-        <div id="dev-exp" class="modal" style="display:none;">
-            @i18n("feature.devexp.desc")
-        </div>
-    </li>
-    <li>
-        <a href="#di" rel="modal:open">@i18n("feature.di.title")</a>
-        <div id="di" class="modal" style="display:none;">
-            @i18n("feature.di.desc")
+@*
+----------------------------------------------------------------------------------------------------------------------
+Annotation Diagrams
+----------------------------------------------------------------------------------------------------------------------
+*@
 
-        </div>
-    </li>
-    <li>
-        <a href="#spa" rel="modal:open">@i18n("feature.spa.title")</a>
-        <div id="spa" class="modal" style="display:none;">
-            @i18n("feature.spa.desc")
-        </div>
-    </li>
-    <li>
-        <a href="#security" rel="modal:open">@i18n("feature.security.title")</a>
-        <div id="security" class="modal" style="display:none;">
-            @i18n("feature.security.desc")
-        </div>
-    </li>
-    <li>
-        <a href="#anno" rel="modal:open">@i18n("feature.anno.title")</a>
-        <div id="anno" class="modal" style="display:none;">
-            @i18n("feature.anno.desc1")
+@def anno_diag_1(){
             <pre class="line-numbers"><code class="language-java">@@RequestMapping(value="/user/{userId}/invoices", method = RequestMethod.GET)
 public List&lt;Invoice&gt; listUsersInvoices(
    @@PathVariable("userId") int user,
@@ -39,19 +12,22 @@ public List&lt;Invoice&gt; listUsersInvoices(
   ...
 }
 </code></pre>
-            @i18n("feature.anno.desc2")
+}
+
+@def anno_diag_2(){
             <pre class="line-numbers"><code class="language-java">@@GetAction("/user/{user}/invoices")
 public List&lt;Invoice&gt; listUsersInvoices(int user, Date date) {
   ...
 }
 </code></pre>
-            @i18n("feature.anno.desc3")
-        </div>
-    </li>
-    <li>
-        <a href="#conf" rel="modal:open">@i18n("feature.conf.title")</a>
-        <div id="conf" class="modal" style="display:none;max-height:90%;">
-            @i18n("feature.conf.desc1")
+}
+
+@*
+----------------------------------------------------------------------------------------------------------------------
+Conf Diagram Text
+----------------------------------------------------------------------------------------------------------------------
+*@
+@def conf_diag(){
             <pre><code>resources
 ├── conf
 │   ├── common
@@ -74,20 +50,15 @@ public List&lt;Invoice&gt; listUsersInvoices(int user, Date date) {
 │   │   └── db.properties
 │   └── uat
 ...</code></pre>
-            @i18n("feature.conf.desc2")
-        </div>
-    </li>
-    <li>
-        <a href="#db" rel="modal:open">@i18n("feature.db.title")</a>
-        <div id="db" class="modal" style="display:none;">
-            @i18n("feature.db.desc")
-        </div>
-    </li>
-    <li>
-        <a href="#multi-db" rel="modal:open">@i18n("feature.mdb.title")</a>
-        <div id="multi-db" class="modal" style="display:none;">
-@i18n("feature.mdb.desc1")
+}
 
+
+@*
+----------------------------------------------------------------------------------------------------------------------
+MDB Diagram Text
+----------------------------------------------------------------------------------------------------------------------
+*@
+@def mdb_diag(){
             <pre class="line-numbers"><code class="language-properties"># the database configuration
 db.instances=mongo,sql
 
@@ -133,17 +104,61 @@ public static class Transaction extends MorphiaModel<Transaction> {
     ...
 }
 </code></pre>
-            @i18n("feature.mdb.desc2")
+    }
+
+
+@*
+----------------------------------------------------------------------------------------------------------------------
+This is the actual template for rendering the Expandable Feature Panel
+----------------------------------------------------------------------------------------------------------------------
+*@
+@def featurePanel(String id, String title, Object[] desc){
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading@id">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse@id" aria-expanded="false" aria-controls="collapse@id">
+                    @i18n(title)
+                </a>
+            </h4>
         </div>
-    </li>
-    <li><a href="#view" rel="modal:open">@i18n("feature.view.title")</a>
-        <div id="view" class="modal" style="display:none;">
-            @i18n("feature.view.desc")
+        <div id="collapse@id" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading@id">
+            <div class="panel-body">
+                @for(int i=0;i<desc.length;i++){
+                    @{
+                        Object o = desc[i];
+                        String s = o instanceof String ? o.toString() : null;
+                    }
+                    @if(null != s && s.startsWith("!")){
+                        @i18n(s.substring(1))
+                    }else{
+                        @o
+                    }
+                }
+            </div>
         </div>
-    </li>
-    <li><a href="#misc" rel="modal:open">@i18n("feature.misc.title")</a>
-        <div id="misc" class="modal" style="display:none;">
-            @i18n("feature.misc.desc")
-        </div>
-    </li>
-</ul>
+    </div>
+}
+
+@*
+----------------------------------------------------------------------------------------------------------------------
+The following code renders each of the features using the template defined at the top.
+Some of the templates need 'diagrams' - so we use the feature of Rythm to define them as RawData
+Where they are not RawData, they need to be i18n resources, so we parse a character at the start
+to see if the data to be rendered should be i18n (! at the start of the resource identifier)
+which is a simple logic statement in the code template above
+----------------------------------------------------------------------------------------------------------------------
+*@
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+    @featurePanel("fullstack","feature.fullstack.title",new Object[]{"!feature.fullstack.desc"})
+    @featurePanel("devexp","feature.devexp.title",new Object[]{"!feature.devexp.desc"})
+    @featurePanel("di","feature.di.title",new Object[]{"!feature.di.desc"})
+    @featurePanel("spa","feature.spa.title",new Object[]{"!feature.spa.desc"})
+    @featurePanel("security","feature.security.title",new Object[]{"!feature.security.desc"})
+    @featurePanel("anno","feature.anno.title",new Object[]{"!feature.anno.desc1",anno_diag_1(),"!feature.anno.desc2",anno_diag_2()})
+    @featurePanel("conf","feature.conf.title",new Object[]{"!feature.conf.desc1",conf_diag(),"!feature.conf.desc2"})
+    @featurePanel("db","feature.db.title",new Object[]{"!feature.db.desc"})
+    @featurePanel("mdb","feature.mdb.title",new Object[]{"!feature.mdb.desc1",mdb_diag(),"!feature.mdb.desc2"})
+    @featurePanel("view","feature.view.title",new Object[]{"!feature.view.desc"})
+    @featurePanel("misc","feature.misc.title",new Object[]{"!feature.misc.desc"})
+</div>
