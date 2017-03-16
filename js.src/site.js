@@ -37,13 +37,6 @@ $(document).ready(function() {
         }
     }
 
-    $("#button").click(function() {
-        $('html, body').animate({
-            scrollTop: $("#elementtoScrollToID").offset().top
-        }, 2000);
-    });
-
-
     function escapeHtml(string) {
         return String(string).replace(/[&<>"'\/]/g, function (s) {
             return entityMap[s];

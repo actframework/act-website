@@ -61,7 +61,7 @@ public class DocLoader extends FastRequestHandler {
         }
         String newPath = sb.toString();
         context.renderArg("docPath", newPath);
-        context.templatePath("/doc.html");
+        context.templatePath("/act_site/WebSite/doc.html");
         return RenderTemplate.get();
     }
 

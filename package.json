@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "font-awesome": "^4.6.3",
     "jquery": "^1.11.3",
+    "jquery-easing": "0.0.1",
     "jquery-modal": "*",
     "markdown-it": "^8.2.2",
     "prismjs": "^1.6.0",

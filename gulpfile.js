@@ -50,8 +50,7 @@ gulp.task('css', function() {
  * */
 gulp.task('css-min', function() {
     return gulp.src([
-        'node_modules/bootstrap/dist/css/bootstrap.min.css',
-        'node_modules/font-awesome/css/font-awesome.min.css'
+        'node_modules/bootstrap/dist/css/bootstrap.min.css'
     ])
         .pipe(gulp.dest(path.css))
         .pipe(notify({ message: 'css-min ok' }));
@@ -98,7 +97,8 @@ gulp.task('js-min', function() {
 gulp.task('js', function() {
     return gulp.src([
             'js.src/*.js',
-            'node_modules/jquery-modal/jquery.modal.js'
+            'node_modules/jquery-modal/jquery.modal.js',
+            'node_modules/jquery-easing/jquery.easing.1.3.js'
         ])
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())

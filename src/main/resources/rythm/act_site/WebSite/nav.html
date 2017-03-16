@@ -1,3 +1,5 @@
+@args boolean addRoot
+@//use this argument to add a / to the start of the URL. This fixes an issue with off-page nav links and smooth scrolling on-page links
 <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -9,7 +11,8 @@
     @//Navigation Link Fragment
     @def navLink(String url, String label){
         <li>
-            <a class="page-scroll" href="@url">@i18n(label)</a>
+            @{String targetUrl = ((addRoot)?"/":"")+url}
+            <a class="page-scroll" href="@targetUrl">@i18n(label)</a>
         </li>
     }
 
@@ -20,7 +23,7 @@
             @navLink("#news","nav.news")
             @navLink("#getstarted","nav.getstarted")
             @navLink("#tutorials","nav.tutorials")
-            @navLink("/doc","nav.documentation")
+            @navLink("/doc/index","nav.documentation")
             @navLink("#support","nav.support")
             @navLink("#about","nav.about")
         </ul>

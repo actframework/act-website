@@ -19,6 +19,11 @@
     font-size: 1.4rem;
     letter-spacing: .2rem;
     font-weight: 600; }
+#video ol {
+    list-style: decimal;
+    padding-left: 14px;
+}
+
 .docs-section {
     border-top: 1px solid #eee;
     padding: 4rem 0;
@@ -35,27 +40,14 @@ iframe.tutorial {
     height: 600px;
     border: none;
 }
-#video ol {
-    list-style: decimal;
-    padding-left: 14px;
-}
-#doc-content {padding-top: 20px;}
-#doc-content h1 { font-size: 2.4rem; line-height: 1.2;  letter-spacing: -.1rem;}
-#doc-content h2 { font-size: 1.8rem; line-height: 1.25; letter-spacing: -.1rem; }
-#doc-content h3 { font-size: 1.6rem; line-height: 1.3;  letter-spacing: -.1rem; }
-#doc-content h4 { font-size: 1.5rem; line-height: 1.35; letter-spacing: -.08rem; background-color: lightblue; padding: 0.3em; }
-#doc-content h5 { font-size: 1.3rem; line-height: 1.5;  letter-spacing: -.05rem; }
-#doc-content h6 { font-size: 1.2rem; line-height: 1.6;  letter-spacing: 0; }
-#doc-content ol {
-    padding-left: 14px;
-    list-style: decimal;
-}
+
 .alert {
     border: 1px solid;
     border-radius: 4px;
     padding: 10px 15px;
     margin: 10px 0px;
 }
+
 .alert.alert-info {
     border-color: #0FA0CE;
     background-color: #b8e5fd;
