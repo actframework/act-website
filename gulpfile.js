@@ -60,7 +60,7 @@ gulp.task('css-min', function() {
  * Gulp pipeline for taking LESS and processing then minifying it
  * then put it in the standard ACT location for static CSS resources
  *
- * Note that, in this case, we have a rsrc directory with a third party bootstrap template.
+ * Note that we have a heavily modified the LESS templates from the rsrc directory.
  * */
 gulp.task('less', function() {
     return gulp.src('less.src/*.less')
@@ -88,11 +88,14 @@ gulp.task('js-min', function() {
 });
 
 /*
- * Gulp pipeline for taking Javascript and minifying it,
- * then put it in the standard ACT location for static JS resources
+ *  Gulp pipeline for taking Javascript and minifying it,
+ *  then put it in the standard ACT location for static JS resources
  *
- * Note: we are using prismjs, however since there are no compiled CSS distribution files in the PrismJS deployment
- * we use pre-compiled versions in the js.src and css.src directories... don't hate me.
+ *  Note: we are using prismjs, however since there are no compiled CSS distribution files in the PrismJS deployment
+ *  we use pre-compiled versions in the js.src and css.src directories... don't hate me.
+ *
+ *  Same deal for highlight.js - it's a custom pack that has language specific extensions, and line-numbers - so
+ *  just nod and smile... then maintain eye contact and step away slowly.
  * */
 gulp.task('js', function() {
     return gulp.src([
