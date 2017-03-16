@@ -3,6 +3,26 @@
 
 <head>
     @head()
+    <style>
+        .panel-default>.panel-heading {
+            border: none;
+            background: transparent;
+        }
+        .panel-default>.panel-heading a {
+            font-weight: bold;
+        }
+        .panel-default>.panel-heading a:hover, .panel-default>.panel-heading a:focus {
+            color: inherit;
+            text-decoration: none;
+        }
+        .panel-default>.panel-heading a::before {
+            content: ">";
+        }
+        .panel {
+            border: none;
+            box-shadow: none;
+        }
+    </style>
 </head>
 
 <body id="page-top">

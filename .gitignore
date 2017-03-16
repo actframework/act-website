@@ -15,3 +15,6 @@ classes
 deploy
 *.log
 **/.act*
+node_modules
+src/main/resources/asset/css/
+src/main/resources/asset/js
