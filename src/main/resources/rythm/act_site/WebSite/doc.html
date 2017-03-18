@@ -51,10 +51,6 @@
             }).use(markdownitFootnote);
 
             function setOutput(val) {
-                val = val.replace(/<equation>((.*?\n)*?.*?)<\/equation>/ig, function (a, b) {
-                    return '<img src="http://latex.codecogs.com/png.latex?' + encodeURIComponent(b) + '" />';
-                });
-
                 var out = document.getElementById('doc-content');
                 if (!out) return
                 var old = out.cloneNode(true);
@@ -82,7 +78,9 @@
                 if (window.location.hash) {
                     setTimeout(function() {
                         $to = $(window.location.hash);
-                        $('html,body').animate({scrollTop: $to.offset().top},'slow');
+                        if ($to.offset()) {
+                            $('html,body').animate({scrollTop: $to.offset().top},'slow');
+                        }
                     }, 1);
                 }
             }
