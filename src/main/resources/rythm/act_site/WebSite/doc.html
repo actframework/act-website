@@ -74,15 +74,16 @@
                     });
                 })
 
-                if (window.location.hash) {
+                var hash = window.location.hash;
+                if (hash) {
                     setTimeout(function() {
-                        $to = $(window.location.hash);
+                        $to = $(hash);
                         if ($to.offset()) {
                             $('html,body').animate({scrollTop: $to.offset().top},'slow');
                         } else {
-                            setTimeout(function() {
-                                console.log({hash_offset: $to.offset()})
-                            }, 200)
+                            var name = hash.substr(1);
+                            $to = $('a[name=' + hash + ']');
+                            $('html,body').animate({scrollTop: $to.offset().top},'slow');
                         }
                     }, 200);
                 }
