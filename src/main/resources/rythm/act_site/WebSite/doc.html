@@ -37,7 +37,6 @@
             var md = markdownit({
                 html: true,
                 highlight: function (code, lang) {
-                    console.log({lang: lang});
                     if (lang && hljs.getLanguage(lang)) {
                         try {
                             return hljs.highlight(lang, code).value;
@@ -82,7 +81,7 @@
                             $('html,body').animate({scrollTop: $to.offset().top},'slow');
                         } else {
                             setTimeout(function() {
-                                console.log($to.offset())
+                                console.log({hash_offset: $to.offset()})
                             }, 200)
                         }
                     }, 200);
