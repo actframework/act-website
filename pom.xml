@@ -13,10 +13,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <act.version>[1.0.2,2.0.0)</act.version>
-    <act-morphia.version>[1.0.1,2.0.0)</act-morphia.version>
-    <act-aaa.version>[1.0.1,2.0.0)</act-aaa.version>
-    <act-social-link.version>[0.8.0,2.0.0)</act-social-link.version>
+    <act.version>1.0.5</act.version>
+    <act-morphia.version>1.0.2</act-morphia.version>
+    <act-aaa.version>1.0.1</act-aaa.version>
+    <act-social-link.version>0.8.0</act-social-link.version>
     <app.entry>act_site.WebSite</app.entry>
   </properties>
 

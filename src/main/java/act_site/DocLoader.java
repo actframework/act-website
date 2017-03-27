@@ -32,7 +32,7 @@ public class DocLoader extends FastRequestHandler {
 
     private RenderTemplate _handle(String path, ActionContext context) {
         Locale locale = context.locale(true);
-        String newPath = null;
+        String newPath;
         if (path.toLowerCase().startsWith("/release_notes")) {
             newPath = "https://raw.githubusercontent.com/actframework/act-doc/master/RELEASE_NOTES.md";
         } else {
@@ -55,6 +55,11 @@ public class DocLoader extends FastRequestHandler {
             }
             newPath = sb.toString();
         }
+        String docId = S.afterLast(newPath, "/");
+        if (docId.contains(".")) {
+            docId = S.before(docId, ".");
+        }
+        context.renderArg("doc", docId.toLowerCase());
         context.renderArg("docPath", newPath);
         context.templatePath("/act_site/WebSite/doc.html");
         return RenderTemplate.get();

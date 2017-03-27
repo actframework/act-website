@@ -24,21 +24,10 @@ hr.light {
 
 a {
     .transition-all;
-    color: @theme-primary;
+    color: darken(@theme-primary, 20%);
     &:hover,
     &:focus {
-        color: darken(@theme-primary, 10%);
-    }
-}
-
-#about{
-    a {
-        .transition-all;
-        color: @theme-primary;
-        &:hover,
-        &:focus {
-            color: darken(@theme-primary, 10%);
-        }
+        color: darken(@theme-primary, 30%);
     }
 }
 
@@ -117,6 +106,14 @@ p {
 .bg-dark {
     background-color: @gray-darker;
     color: white;
+
+    a {
+        color: @theme-primary;
+        &:hover,
+        &:focus {
+            color: darken(@theme-primary, 10%);
+        }
+    }
 }
 
 .text-faded {
@@ -133,6 +130,13 @@ aside {
 
 .no-padding {
     padding: 0;
+}
+
+.doc.release_notes {
+    li a {
+        font-size: 16px;
+        font-weight: bold;
+    }
 }
 
 .OverwriteDialogOverflow { overflow: visible; }
