@@ -1,10 +1,8 @@
 package act_site;
 
 import act.Act;
-import act.app.conf.AppConfigurator;
 import act.db.morphia.MorphiaDao;
 import act.util.ActContext;
-import act.view.TemplatePathResolver;
 import org.osgl.mvc.annotation.GetAction;
 
 import java.util.Locale;
@@ -12,6 +10,7 @@ import java.util.Locale;
 import static act.controller.Controller.Util.render;
 
 public class WebSite {
+
 
     /*
     public static class MyConfiguration extends AppConfigurator {

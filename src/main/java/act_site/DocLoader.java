@@ -2,6 +2,7 @@ package act_site;
 
 import act.app.ActionContext;
 import act.app.App;
+import act.controller.Controller;
 import act.controller.ParamNames;
 import act.handler.builtin.controller.FastRequestHandler;
 import act.view.RenderTemplate;
@@ -31,10 +32,13 @@ public class DocLoader extends FastRequestHandler {
     }
 
     private RenderTemplate _handle(String path, ActionContext context) {
+
         Locale locale = context.locale(true);
         String newPath;
         if (path.toLowerCase().startsWith("/release_notes")) {
             newPath = "https://raw.githubusercontent.com/actframework/act-doc/master/RELEASE_NOTES.md";
+        } else if ("/".equals(path) || "".equals(path)) {
+            throw Controller.Util.redirect("/doc/index.md");
         } else {
             String sLocale = locale.getLanguage();
             String lang = ("zh".equals(sLocale)) ? "cn" : "en";
