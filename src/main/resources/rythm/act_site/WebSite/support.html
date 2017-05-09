@@ -4,33 +4,35 @@
     </div>
 </div>
 
+@args String imageContext
+
 <div class="container">
     <div class="row">
 
         <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-                <i class="text-primary sr-icons"><img src="/image/icon/github2.png" style="width:48px;height:48px;"></i>
+                <i class="text-primary sr-icons"><img src="@(imageContext)/icon/github2.png" style="width:48px;height:48px;"></i>
             </div>
             <p class="text-faded">@i18n("support.github")</p>
         </div>
 
         <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-                <i class="text-primary sr-icons"><img src="/image/icon/gitter.png" style="width:48px;height:48px;"></i>
+                <i class="text-primary sr-icons"><img src="@(imageContext)/icon/gitter.png" style="width:48px;height:48px;"></i>
             </div>
             <p class="text-faded">@i18n("support.gitter")</p>
         </div>
 
         <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-                <i class="text-primary sr-icons"><img src="/image/icon/so.png" style="width:48px;height:48px;"></i>
+                <i class="text-primary sr-icons"><img src="@(imageContext)/icon/so.png" style="width:48px;height:48px;"></i>
             </div>
             <p class="text-faded">@i18n("support.so")</p>
         </div>
 
         <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-                <i class="text-primary sr-icons"><img src="/image/icon/studio-icon.png" style="width:48px;height:48px;"></i>
+                <i class="text-primary sr-icons"><img src="@(imageContext)/icon/studio-icon.png" style="width:48px;height:48px;"></i>
             </div>
             <p class="text-faded">@i18n("support.consulting")</p>
         </div>
@@ -40,7 +42,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 text-center">
             <br><br>
-            <p class="text-muted">@i18n("support.qq") <img src="/image/icon/qq.png" style="width:24px;height:24px;"></p>
+            <p class="text-muted">@i18n("support.qq") <img src="@(imageContext)/icon/qq.png" style="width:24px;height:24px;"></p>
             <!-- <p class="text-muted"><img src="/image/icon/groups.png" style="width:24px;height:24px;"> Join the <a href="https://groups.google.com/forum/#!forum/actframework">Google Group</a> as well</p> -->
         </div>
     </div>

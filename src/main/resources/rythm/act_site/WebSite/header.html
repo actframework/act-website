@@ -1,6 +1,7 @@
 <div class="header-content">
     <div class="header-content-inner">
-        <img src="/image/big-logo.png" style="width:100%;">
+        @args String imageContext
+        <img src="@(imageContext)/big-logo.png" style="width:100%;">
         <h1 id="homeHeading">@i18n("header.headline")</h1>
         <p>@i18n("header.subline")</p>
         <br><br>

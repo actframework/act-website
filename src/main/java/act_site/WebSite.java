@@ -46,13 +46,15 @@ public class WebSite {
         String lang = "en"; //default language
         Locale locale = context.locale(true);
         boolean isCn = false;
+        String imageContext = "/image";
         if ("zh".equals(locale.getLanguage())) {
             lang = "cn" ; //supported language
             isCn = true;
+            imageContext = "http://static.jinbaozheng.com/act";
         }
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
         Iterable<Video> videos = videoDao.findAll();
-        render(skeletons, videos, lang, isCn);
+        render(skeletons, videos, lang, isCn, imageContext);
     }
 
     public static void main(String[] args) throws Exception {

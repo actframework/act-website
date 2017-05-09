@@ -6,9 +6,10 @@
 
 <title>@i18n("main.title")</title>
 
+@args String imageContext
 <!-- Site Favicon -->
-<link rel="shortcut icon" type="image/png" href="/image/favicon.png"/>
-<link rel="shortcut icon" type="image/png" href="http://actframework.org/image/favicon.png"/>
+<link rel="shortcut icon" type="@(imageContext)/png" href="/image/favicon.png"/>
+<link rel="shortcut icon" type="@(imageContext)/png" href="http://actframework.org/image/favicon.png"/>
 
 <!-- Bootstrap Core CSS -->
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">

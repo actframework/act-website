@@ -1,3 +1,4 @@
+@args String imageContext;
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -7,11 +8,11 @@
                 @i18n("about.body")
                 <p><b>@i18n("about.thankyou.headline")</b></p>
                 <p>
-                    <img src="/image/thinking-studio-logo.png" style="width:32px;height:32px">&nbsp;&nbsp;
+                    <img src="@(imageContext)/thinking-studio-logo.png" style="width:32px;height:32px">&nbsp;&nbsp;
                     @i18n("about.studio")
                 </p>
                 <p>
-                    <img src="/image/idea-logo.png" style="width:32px;height:32px">&nbsp;&nbsp;
+                    <img src="@(imageContext)/idea-logo.png" style="width:32px;height:32px">&nbsp;&nbsp;
                     @i18n("about.jetbrains")
                 </p>
             </div>

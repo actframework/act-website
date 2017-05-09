@@ -1,11 +1,11 @@
-@args boolean addRoot
+@args boolean addRoot, String imageContext
 @//use this argument to add a / to the start of the URL. This fixes an issue with off-page nav links and smooth scrolling on-page links
 <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand page-scroll" href="#page-top"><img src="/image/act-logo-type.png" style="width: 250px;"></a>
+        <a class="navbar-brand page-scroll" href="#page-top"><img src="@(imageContext)/act-logo-type.png" style="width: 250px;"></a>
     </div>
 
     @//Navigation Link Fragment
