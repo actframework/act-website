@@ -69,6 +69,7 @@ public class DocLoader extends FastRequestHandler {
         context.renderArg("doc", docId.toLowerCase());
         context.renderArg("docPath", newPath);
         context.renderArg("isCn", isCn);
+        context.renderArg("imageContext", isCn ? "http://static.jinbaozheng.com/act" : "/image");
         context.templatePath("/act_site/WebSite/doc.html");
         return RenderTemplate.get();
     }
