@@ -35,14 +35,17 @@ public class DocLoader extends FastRequestHandler {
 
         Locale locale = context.locale(true);
         String newPath;
+        String sLocale = locale.getLanguage();
+        boolean isCn = ("zh".equals(sLocale));
         if (path.toLowerCase().startsWith("/release_notes")) {
             newPath = "https://raw.githubusercontent.com/actframework/act-doc/master/RELEASE_NOTES.md";
         } else if ("/".equals(path) || "".equals(path)) {
             throw Controller.Util.redirect("/doc/index.md");
         } else {
-            String sLocale = locale.getLanguage();
-            String lang = ("zh".equals(sLocale)) ? "cn" : "en";
-            StringBuilder sb = S.builder("https://raw.githubusercontent.com/actframework/act-doc/master/").append(lang);
+            String lang =  isCn ? "cn" : "en";
+            String server = ("zh".equals(sLocale)) ? "http://git.oschina.net/actframework/act-doc/raw/master/" : "https://raw.githubusercontent.com/actframework/act-doc/master/";
+            server = "https://raw.githubusercontent.com/actframework/act-doc/master/"; // until OSC fixed the CORS issue
+            S.Buffer sb = S.newBuffer(server).append(lang);
             if (path.contains("#")) {
                 String[] pa = path.split("#");
                 String pa1 = pa[0];
@@ -65,6 +68,7 @@ public class DocLoader extends FastRequestHandler {
         }
         context.renderArg("doc", docId.toLowerCase());
         context.renderArg("docPath", newPath);
+        context.renderArg("isCn", isCn);
         context.templatePath("/act_site/WebSite/doc.html");
         return RenderTemplate.get();
     }

@@ -45,12 +45,14 @@ public class WebSite {
     {
         String lang = "en"; //default language
         Locale locale = context.locale(true);
+        boolean isCn = false;
         if ("zh".equals(locale.getLanguage())) {
             lang = "cn" ; //supported language
+            isCn = true;
         }
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
         Iterable<Video> videos = videoDao.findAll();
-        render(skeletons, videos, lang);
+        render(skeletons, videos, lang, isCn);
     }
 
     public static void main(String[] args) throws Exception {

@@ -11,7 +11,7 @@
     @//Navigation Link Fragment
     @def navLink(String url, String label){
         <li>
-            @{String targetUrl = ((addRoot)?"/":"")+url}
+            @{String targetUrl = ((addRoot && !url.startsWith("/"))?"/":"")+url}
             <a class="page-scroll" href="@targetUrl">@i18n(label)</a>
         </li>
     }
