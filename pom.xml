@@ -19,8 +19,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <act.version>1.4.0</act.version>
-    <act-morphia.version>1.1.0</act-morphia.version>
+    <act.version>1.4.3</act.version>
+    <act-morphia.version>1.2.0</act-morphia.version>
     <act-aaa.version>1.2.0</act-aaa.version>
     <act-social-link.version>0.10.0</act-social-link.version>
     <app.entry>act_site.WebSite</app.entry>
