@@ -14,3 +14,9 @@
 <script src="/js/creative.min.js"></script>
 <script src="/js/site.min.js"></script>
 
+<script>
+  $.get('https://raw.githubusercontent.com/actframework/actframework/master/NEWS.md', function(result) {
+    var out = document.getElementById('news-container')
+    out.innerHTML = result;
+  })
+</script>
