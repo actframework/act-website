@@ -20,7 +20,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "highlight.js": "^9.10.0",
-    "jquery": "^1.11.3",
+    "jquery": "^3.0.0",
     "jquery-easing": "0.0.1",
     "markdown-it": "^8.2.2",
     "prismjs": "^1.6.0",
