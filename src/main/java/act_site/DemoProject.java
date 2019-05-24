@@ -11,6 +11,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.mongodb.morphia.annotations.Entity;
 import org.osgl.$;
+import org.osgl.util.C;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;
@@ -46,6 +47,10 @@ public class DemoProject extends MorphiaAdaptiveRecord<DemoProject> implements C
             }
         }
 
+        public List<DemoProject> list() {
+            return C.newList(findAll()).sorted();
+        }
+
         private List<DemoProject> doSyncGithub() throws Exception {
             List<DemoProject> list = new ArrayList<>();
             OkHttpClient http = new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).connectTimeout(5, TimeUnit.SECONDS).build();
@@ -56,7 +61,14 @@ public class DemoProject extends MorphiaAdaptiveRecord<DemoProject> implements C
             for (int i = 0; i < array.size(); ++i) {
                 JSONObject obj = array.getJSONObject(i);
                 String name = obj.getString("name");
-                if ("crud".equalsIgnoreCase(name) || name.contains("obsolete") || name.contains("ebean2")) {
+                if ("crud".equalsIgnoreCase(name)
+                        || name.contains("obsolete")
+                        || name.contains("ebean2")
+                        || name.contains("feature-test")
+                        || name.contains("jax-rs")
+                        || name.contains("single-jar")
+                        || name.contains("java7")
+                ) {
                     continue; // skip crud as it is not a normal showcase project
                 }
                 DemoProject proj = $.copy(array.getJSONObject(i)).filter("-id").to(DemoProject.class);

@@ -55,7 +55,7 @@ public class WebSite {
         }
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
         Iterable<Video> videos = videoDao.findAll();
-        List<DemoProject> demoProjects = demoProjectDao.findAllAsList();
+        List<DemoProject> demoProjects = demoProjectDao.list();
         render(demoProjects, videos, lang, isCn, imageContext);
     }
 
