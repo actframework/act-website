@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Entity("demo")
 public class DemoProject extends MorphiaAdaptiveRecord<DemoProject> implements Comparable<DemoProject> {
 
+    public String label;
     public String name;
     public String description;
 
@@ -36,18 +37,20 @@ public class DemoProject extends MorphiaAdaptiveRecord<DemoProject> implements C
 
     public static class Dao extends MorphiaDao<DemoProject> {
 
-        @Every("1h")
+        @Every("10mn")
         public void sync() {
             try {
                 List<DemoProject> demoProjects = doSyncGithub();
-                this.drop();
-                this.save(demoProjects);
+                synchronized (this) {
+                    this.drop();
+                    this.save(demoProjects);
+                }
             } catch (Exception e) {
                 warn(e, "Error sync demo projects from act-gallery github organisation");
             }
         }
 
-        public List<DemoProject> list() {
+        public synchronized List<DemoProject> list() {
             return C.newList(findAll()).sorted();
         }
 
@@ -72,7 +75,7 @@ public class DemoProject extends MorphiaAdaptiveRecord<DemoProject> implements C
                     continue; // skip crud as it is not a normal showcase project
                 }
                 DemoProject proj = $.copy(array.getJSONObject(i)).filter("-id").to(DemoProject.class);
-                proj.name = proj.name.replace("transaction", "tx");
+                proj.label = proj.name.replace("transaction", "tx");
                 list.add(proj);
             }
             Collections.sort(list);

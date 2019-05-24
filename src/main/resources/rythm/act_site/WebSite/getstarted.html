@@ -1,7 +1,9 @@
-@def gitHubLink(String name, String desc) {
+@def gitHubLink(String label, String name, String desc) {
 <li class="download">
     <div class="row">
-        <div class="col-lg-2 text-left" style="white-space: nowrap">@name</div>
+        <div class="col-lg-2 text-left" style="white-space: nowrap">
+            <a href="https://github.com/act-garry/@(name)" target="_blank">@name</a>
+        </div>
         <div class="col-lg-6 col-lg-offset-1 text-left">@desc</div>
         <div class="col-lg-1 col-lg-offset-1 text-center">
             <a href="https://github.com/act-gallery/@(name)/archive/master.zip" class="text-faded"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"> <g transform="translate(0, 0)"> <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="12" y1="9" x2="12" y2="22" stroke-linejoin="round" stroke-linecap="round"></line> <polyline data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points=" 15,19 12,22 9,19 " stroke-linejoin="round"></polyline> <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M17,16h2 c2.209,0,4-1.791,4-4c0-2.197-1.782-4.013-4.025-3.997C18.718,4.093,15.474,1,11.5,1C7.481,1,4.21,4.164,4.018,8.136 C2.287,8.575,1,10.132,1,12c0,2.209,1.791,4,4,4h2" stroke-linejoin="round"></path> </g> </svg></a>
@@ -23,7 +25,7 @@
                 <div class="row" style="padding-top: 30px;"></div>
                 <ul class="docs-section">
                     @for (demoProjects) {
-                    @gitHubLink(_.name, _.description)
+                    @gitHubLink(_.label, _.name, _.description)
                     }
                 </ul>
             </div>
