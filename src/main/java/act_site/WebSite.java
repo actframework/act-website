@@ -5,6 +5,7 @@ import act.db.morphia.MorphiaDao;
 import act.util.ActContext;
 import org.osgl.mvc.annotation.GetAction;
 
+import java.util.List;
 import java.util.Locale;
 
 import static act.controller.Controller.Util.render;
@@ -41,7 +42,7 @@ public class WebSite {
     */
 
     @GetAction
-    public void master(MorphiaDao<Skeleton> skeletonDao, Video.Dao videoDao, ActContext context)
+    public void master(MorphiaDao<Skeleton> skeletonDao, Video.Dao videoDao, DemoProject.Dao demoProjectDao, ActContext context)
     {
         String lang = "en"; //default language
         Locale locale = context.locale(true);
@@ -54,7 +55,8 @@ public class WebSite {
         }
         Iterable<Skeleton> skeletons = skeletonDao.findAll();
         Iterable<Video> videos = videoDao.findAll();
-        render(skeletons, videos, lang, isCn, imageContext);
+        List<DemoProject> demoProjects = demoProjectDao.findAllAsList();
+        render(demoProjects, videos, lang, isCn, imageContext);
     }
 
     public static void main(String[] args) throws Exception {
