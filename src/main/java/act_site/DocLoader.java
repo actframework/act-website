@@ -1,10 +1,12 @@
 package act_site;
 
+import act.Act;
 import act.app.ActionContext;
 import act.app.App;
 import act.controller.Controller;
 import act.controller.ParamNames;
 import act.handler.builtin.controller.FastRequestHandler;
+import act.job.OnAppStart;
 import act.view.RenderTemplate;
 import org.osgl.http.H;
 import org.osgl.util.S;
@@ -77,5 +79,10 @@ public class DocLoader extends FastRequestHandler {
     @Override
     public boolean supportPartialPath() {
         return true;
+    }
+
+    @OnAppStart
+    public void ensureLoaded() {
+        Act.LOGGER.info("DocLoader loaded!");
     }
 }
