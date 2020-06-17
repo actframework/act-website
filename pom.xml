@@ -16,6 +16,7 @@
   </parent>
 
   <properties>
+    <java.version>1.8</java.version>
     <app.entry>act_site.WebSite</app.entry>
   </properties>
 
@@ -24,6 +25,7 @@
     <dependency>
       <groupId>org.actframework</groupId>
       <artifactId>act-morphia</artifactId>
+      <version>1.9.1-SNAPSHOT</version>
     </dependency>
 
   </dependencies>

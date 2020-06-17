@@ -61,18 +61,19 @@
             <div class="row">
                 <legend class="col-form-label col-sm-4 pt-0">请选择您感兴趣的在线课程模块</legend>
                 <div class="col-sm-8">
-                @chkModule("basis", "ActFramework 介绍, 搭建项目, IDEA, Maven, Git 的使用")
-                @chkModule("controller", "控制器以及请求处理 - 输入输出")
-                @chkModule("rythm", "Rythm 模板引擎")
-                @chkModule("db", "数据库访问")
-                @chkModule("configuration", "配置")
-                @chkModule("di", "依赖注入与资源加载")
-                @chkModule("excel", "Excel, CSV 报表")
-                @chkModule("websocket", "Web Socket 的使用")
-                @chkModule("async", "异步处理")
-                @chkModule("cli", "命令行的使用")
-                @chkModule("test", "自动化测试")
-                @chkModule("api", "API 文档")
+                    @chkModule("basis", "ActFramework 介绍, 搭建项目, IDEA, Maven, Git 的使用")
+                    @chkModule("controller", "控制器以及请求处理 - 输入输出")
+                    @chkModule("rythm", "Rythm 模板引擎")
+                    @chkModule("db", "数据库访问")
+                    @chkModule("configuration", "配置")
+                    @chkModule("di", "依赖注入与资源加载")
+                    @chkModule("excel", "Excel, CSV 报表")
+                    @chkModule("websocket", "Web Socket 的使用")
+                    @chkModule("async", "异步处理")
+                    @chkModule("cli", "命令行的使用")
+                    @chkModule("test", "自动化测试")
+                    @chkModule("api", "API 文档")
+                    @chkModule("aaa", "AAA - 认证, 授权与记账")
                     <textarea class="form-control col-sm-8" rows="5" name="moduleExt" placeholder="您需要的其他内容"></textarea>
                 </div>
             </div>
@@ -80,7 +81,7 @@
         <div class="form-group row" id="fsCourseFee">
             <label class="col-sm-4 col-form-label">您对在线课程价格的期望值(人民币/小时)</label>
             <div class="col-sm-4">
-            <input class="form-control" name="coursePrice" type="number">
+            <input class="form-control" name="coursePrice" type="number" value="0">
             </div>
         </div>
     </div>

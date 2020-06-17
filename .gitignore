@@ -18,3 +18,5 @@ deploy
 node_modules
 src/main/resources/asset/css/
 src/main/resources/asset/js
+*.pid
+db/

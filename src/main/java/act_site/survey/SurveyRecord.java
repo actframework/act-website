@@ -1,5 +1,6 @@
-package act_site.survey_202006;
+package act_site.survey;
 
+import act.Act;
 import act.controller.annotation.UrlContext;
 import act.db.morphia.MorphiaAdaptiveRecord;
 import act.db.morphia.MorphiaDao;
@@ -13,21 +14,12 @@ import java.util.*;
 
 import static act.controller.Controller.Util.*;
 
-@Entity("sr")
+@Entity(value = "sr", noClassnameStored = true)
 public class SurveyRecord extends MorphiaAdaptiveRecord<SurveyRecord> {
-
-    public static class Report {
-        int responders;
-        int maxCoursePrice;
-        int minCoursePrice;
-        int averageCoursePrice;
-        SortedMap<String, Integer> modules = new TreeMap<>();
-        List<String> requestForConsulting = new ArrayList<>();
-        List<String> requestForPersonalCourse = new ArrayList<>();
-    }
 
     public String participant;
     public List<String> moduleExt;
+    public int coursePrice;
 
     @UrlContext("/survey/202006")
     public static class Dao extends MorphiaDao<SurveyRecord> {
@@ -38,8 +30,8 @@ public class SurveyRecord extends MorphiaAdaptiveRecord<SurveyRecord> {
 
         @GetAction("report")
         public void report(String pass) {
-            notFoundIf(S.neq(pass, System.getenv("survey202006pass")));
-            Report report = report();
+            notFoundIf(Act.isProd() && S.neq(pass, System.getenv("survey202006pass")));
+            SurveyReport report = buildReport();
             renderTemplate("/survey_result.html", report);
         }
 
@@ -63,8 +55,8 @@ public class SurveyRecord extends MorphiaAdaptiveRecord<SurveyRecord> {
             renderHtml("<html><head><meta http-equiv=\"refresh\" content=\"1; URL='http://actframework.org'\" /></head><body><h1>谢谢</h1></body></html>");
         }
 
-        private Report report() {
-            Report report = new Report();
+        private SurveyReport buildReport() {
+            SurveyReport report = new SurveyReport();
             reportTotalResponders(report);
             reportCoursePrices(report);
             reportModules(report);
@@ -73,30 +65,30 @@ public class SurveyRecord extends MorphiaAdaptiveRecord<SurveyRecord> {
             return report;
         }
 
-        private void reportTotalResponders(Report report) {
+        private void reportTotalResponders(SurveyReport report) {
             report.responders = (int) count();
         }
 
-        private void reportCoursePrices(Report report) {
+        private void reportCoursePrices(SurveyReport report) {
             report.maxCoursePrice = max("coursePrice").intValue();
-            report.minCoursePrice = min("coursePrice").intValue();
-            report.averageCoursePrice = average("coursePrice").intValue();
+            report.minCoursePrice = q("coursePrice >", 0).intMin("coursePrice");
+            report.averageCoursePrice = q("coursePrice >", 0).intAverage("coursePrice");
         }
 
-        private void reportModules(Report report) {
+        private void reportModules(SurveyReport report) {
             for (SurveyRecord sr : findAll()) {
                 aggregateModules(sr, report.modules);
             }
         }
 
-        private void reportRequestForConsulting(Report report) {
-            for (SurveyRecord sr: findBy("service:consulting", true)) {
+        private void reportRequestForConsulting(SurveyReport report) {
+            for (SurveyRecord sr: findBy("service:consulting", "true")) {
                 report.requestForConsulting.add(sr.participant);
             }
         }
 
-        private void reportRequestForPersonalCourse(Report report) {
-            for (SurveyRecord sr: findBy("service:personalCourse", true)) {
+        private void reportRequestForPersonalCourse(SurveyReport report) {
+            for (SurveyRecord sr: findBy("service:personalCourse", "true")) {
                 report.requestForPersonalCourse.add(sr.participant);
             }
         }

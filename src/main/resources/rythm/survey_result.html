@@ -2,52 +2,71 @@
 <html>
 <head>
     <title>ActFramework 付费服务调查结果</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
     <style>
+        body {
+            padding: 30px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
 <h1>ActFramework 付费服务调查结果</h1>
-@args act_site.survey_202006.SurveyRecord.Report report
+@args act_site.survey.SurveyReport report
 <h2>Summary</h2>
-@def listItem(String label {
-    @listItem(label, null)
+@def listItem(String label) {
+@listItem(label, null)
 }
 @def listItem(String label, Integer value) {
 <li class="list-group-item">
-    @if(value) {<span class="badge">@value</span>}
     @label
+    @if(value) {<span class="badge">@value</span>}
 </li>
 }
 <ul class="list-group" id="summary">
-    @listItem("Responders", report.responders);
+    @listItem("Responders", report.responders)
     @listItem("Max course price", report.maxCoursePrice)
     @listItem("Min course price", report.minCoursePrice)
     @listItem("Avg course price", report.averageCoursePrice)
 </ul>
 <h2>Request for business consulting</h2>
 <ul class="list-group" id="consulting">
-    @for(report.requestForConsulting) {
-    @listItem(_)
+    @for(String resp: report.requestForConsulting) {
+    @listItem(resp)
     } else {
     @listItem("No one requested business consulting")
     }
 </ul>
 <h2>Request for personal course</h2>
 <ul class="list-group" id="personal-course">
-    @for(report.requestForPersonalCourse) {
-    @listItem(_)
+    @for(String resp: report.requestForPersonalCourse) {
+    @listItem(resp)
     } else {
     @listItem("No one requested personal course")
     }
 </ul>
 <h2>Public course modules</h2>
 <ul class="list-group" id="course-modules">
-    @for(module: modules.keySet()) {
-    @listItem(module, modules.get(module))
+    @for(String module: report.modules.keySet()) {
+    @listItem(module, report.modules.get(module))
     }
 </ul>
 </body>
