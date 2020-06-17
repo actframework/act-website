@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ActFramework 付费服务调查</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 30px;
+        }
+        #note {
+            margin: 30px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>ActFramework 付费服务调查</h1>
+<div id="note">
+    注意: 您的选择邮寄到 greenlaw110@@gmail.com 除此之外, 不会公开
+</div>
+<form method="post">
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label" title="">您在 ActFramework QQ 群的名字</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="participant" >
+        </div>
+    </div>
+    @def chk(String name, String value, String label) {
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="true" name="@(name):@value" id="@value">
+        <label class="form-check-label" for="@value">@label</label>
+    </div>
+    }
+    @def chkService(String value, String label) {
+        @chk("service", value, label)
+    }
+    @def chkModule(String value, String label) {
+        @chk("module", value, label)
+    }
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-4 pt-0">您愿意获得哪些 ActFramework 付费服务</legend>
+            <div class="col-sm-8">
+            @chkService("onlineCourse", "在线课程")
+            @chkService("personalCourse", "一对一教学")
+            @chkService("consulting", "商业项目咨询服务")
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="form-group" id="fsOnlinePanel">
+        <div class="row">
+            <legend class="col-form-label col-sm-4 pt-0">请选择您感兴趣的在线课程模块</legend>
+            <div class="col-sm-8">
+            @chkModule("basis", "ActFramework 介绍, 搭建项目, IDEA, Maven, Git 的使用")
+            @chkModule("controller", "控制器以及请求处理 - 输入输出")
+            @chkModule("rythm", "Rythm 模板引擎")
+            @chkModule("db", "数据库访问")
+            @chkModule("configuration", "配置")
+            @chkModule("di", "依赖注入与资源加载")
+            @chkModule("excel", "Excel, CSV 报表")
+            @chkModule("websocket", "Web Socket 的使用")
+            @chkModule("async", "异步处理")
+            @chkModule("cli", "命令行的使用")
+            @chkModule("test", "自动化测试")
+            @chkModule("api", "API 文档")
+                <textarea class="form-control col-sm-8" rows="5" name="moduleExt" placeholder="您需要的其他内容"></textarea>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group row" id="fsCourseFee">
+        <label class="col-sm-4 col-form-label">您对在线课程价格的期望值(人民币/小时)</label>
+        <div class="col-sm-4">
+        <input class="form-control" name="coursePrice" type="number">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+</form>
+</body>
+</html>
